@@ -27,8 +27,6 @@ export default {
         foreground: "oklch(var(--foreground))",
         raspberry: {
           DEFAULT: "#872642",
-          deep: "#5e1a2e",
-          mid: "#6e2038",
           light: "rgba(135,38,66,0.08)",
           mist: "rgba(135,38,66,0.05)",
         },
@@ -91,7 +89,6 @@ export default {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
         raspberry: "0 4px 24px rgba(135,38,66,0.18)",
         "raspberry-lg": "0 12px 48px rgba(135,38,66,0.25)",
-        "raspberry-xl": "0 20px 64px rgba(135,38,66,0.35)",
       },
       keyframes: {
         "accordion-down": {

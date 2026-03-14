@@ -78,33 +78,10 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.07;
+  opacity: 0.06;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   z-index: 1;
-}
-
-/* ─── Pulsing glow ring for primary CTA ─────────────────────── */
-@keyframes pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55), 0 8px 40px
-      rgba(0, 0, 0, 0.35);
-  }
-  70% {
-    box-shadow: 0 0 0 14px rgba(255, 255, 255, 0), 0 8px 40px
-      rgba(0, 0, 0, 0.35);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0), 0 8px 40px rgba(0, 0, 0, 0.35);
-  }
-}
-.cta-pulse {
-  animation: pulse-ring 2.4s ease-out infinite;
-}
-.cta-pulse:hover {
-  animation: none;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35), 0 12px 48px
-    rgba(0, 0, 0, 0.4);
 }
 
 /* ─── Navbar link hover underline animation ──────────────────── */
@@ -127,22 +104,13 @@
   width: 100%;
 }
 
-/* ─── Feature card: hover lift ──────────────────────────────── */
+/* ─── Feature card left-accent on hover ─────────────────────── */
 .feature-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-left: 3px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-}
-
-/* ─── Portfolio card hover ───────────────────────────────────── */
-.portfolio-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.portfolio-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(135, 38, 66, 0.28);
+  border-left-color: #872642;
 }
 
 /* Smooth scroll */

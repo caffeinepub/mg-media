@@ -1,7 +1,7 @@
 import List "mo:core/List";
+import Migration "migration";
 
-
-
+(with migration = Migration.run)
 actor {
   type Submission = {
     name : Text;

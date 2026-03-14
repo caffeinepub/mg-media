@@ -3,30 +3,30 @@ import { ArrowRight, Search, Smartphone, Zap } from "lucide-react";
 import { motion } from "motion/react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, delay: i * 0.13 },
+    transition: { duration: 0.6, delay: i * 0.13 },
   }),
 };
 
 const features = [
   {
     num: "01",
-    icon: <Zap size={24} />,
+    icon: <Zap size={26} />,
     title: "Fast Loading",
     desc: "No one likes to wait. We keep it snappy — optimised images, lean code, instant load.",
   },
   {
     num: "02",
-    icon: <Smartphone size={24} />,
+    icon: <Smartphone size={26} />,
     title: "Mobile First",
     desc: "Your site will look stunning on every screen, from a 4-inch phone to a 4K monitor.",
   },
   {
     num: "03",
-    icon: <Search size={24} />,
+    icon: <Search size={26} />,
     title: "SEO Ready",
     desc: "Built so local customers can actually find you when they search nearby.",
   },
@@ -36,14 +36,16 @@ const portfolioCards = [
   {
     title: "Restaurant Website",
     desc: "Modern digital menus and integrated online booking.",
+    color: "#872642",
+    pattern: "🍽️",
     tag: "Food & Dining",
-    image: "/assets/generated/restaurant-website.dim_800x500.jpg",
   },
   {
     title: "Beauty Salon",
     desc: "Elegant design with seamless booking system.",
+    color: "#a34060",
+    pattern: "💄",
     tag: "Beauty & Wellness",
-    image: "/assets/generated/beauty-salon.dim_800x500.jpg",
   },
 ];
 
@@ -55,130 +57,56 @@ export default function Home() {
         className="relative overflow-hidden hero-grain"
         style={{
           background:
-            "radial-gradient(ellipse 120% 90% at 60% -10%, #c0405e 0%, #872642 30%, #5e1a2e 65%, #2d0a15 100%)",
-          minHeight: "94vh",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, #a0304f 0%, #872642 45%, #5e1a2e 100%)",
+          minHeight: "88vh",
           display: "flex",
           alignItems: "center",
         }}
       >
-        {/* Radial spotlight glow */}
-        <div
-          aria-hidden="true"
-          className="absolute pointer-events-none"
-          style={{
-            top: "-10%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "80vw",
-            height: "70vh",
-            background:
-              "radial-gradient(ellipse at center, rgba(220,80,110,0.28) 0%, rgba(135,38,66,0.12) 45%, transparent 70%)",
-            zIndex: 1,
-          }}
-        />
-
-        {/* Diagonal geometric band overlay */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none overflow-hidden"
-          style={{ zIndex: 0 }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: "-20%",
-              right: "-10%",
-              width: "55%",
-              height: "140%",
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)",
-              transform: "skewX(-12deg)",
-              borderLeft: "1px solid rgba(255,255,255,0.07)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              top: "-20%",
-              right: "5%",
-              width: "30%",
-              height: "140%",
-              background: "rgba(255,255,255,0.02)",
-              transform: "skewX(-12deg)",
-              borderLeft: "1px solid rgba(255,255,255,0.04)",
-            }}
-          />
-        </div>
-
         {/* Ghost typographic watermark */}
         <div
-          className="absolute inset-0 flex items-end justify-start pointer-events-none select-none overflow-hidden"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden"
           aria-hidden="true"
-          style={{ zIndex: 0 }}
         >
           <span
             className="font-display font-bold leading-none"
             style={{
-              fontSize: "clamp(8rem, 26vw, 20rem)",
-              color: "rgba(255,255,255,0.035)",
+              fontSize: "clamp(10rem, 28vw, 22rem)",
+              color: "rgba(255,255,255,0.04)",
               letterSpacing: "-0.04em",
               whiteSpace: "nowrap",
-              marginBottom: "-0.1em",
-              marginLeft: "-0.05em",
             }}
           >
-            MG
+            MG MEDIA
           </span>
         </div>
 
-        {/* Decorative ring accents */}
+        {/* Decorative corner rings */}
         <div
           aria-hidden="true"
-          className="absolute -top-40 -left-40 w-96 h-96 rounded-full pointer-events-none"
+          className="absolute -top-32 -left-32 w-80 h-80 rounded-full pointer-events-none"
           style={{ border: "1px solid rgba(255,255,255,0.06)" }}
         />
         <div
           aria-hidden="true"
-          className="absolute -top-20 -left-20 w-52 h-52 rounded-full pointer-events-none"
-          style={{ border: "1px solid rgba(255,255,255,0.04)" }}
+          className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
+          style={{ border: "1px solid rgba(255,255,255,0.05)" }}
         />
         <div
           aria-hidden="true"
-          className="absolute -bottom-28 -right-28 w-80 h-80 rounded-full pointer-events-none"
-          style={{ border: "1px solid rgba(255,255,255,0.05)" }}
+          className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 rounded-full pointer-events-none"
+          style={{ background: "rgba(255,255,255,0.02)" }}
         />
 
-        <div
-          className="container mx-auto px-6 py-32 md:py-44 text-center max-w-4xl relative"
-          style={{ zIndex: 10 }}
-        >
+        <div className="container mx-auto px-6 py-28 md:py-40 text-center max-w-4xl relative z-10">
           <motion.p
             custom={0}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-xs font-semibold tracking-[0.24em] uppercase mb-6 inline-flex items-center gap-2"
-            style={{ color: "rgba(255,200,210,0.85)" }}
+            className="text-xs font-semibold tracking-[0.22em] uppercase mb-5 text-white/60"
           >
-            <span
-              style={{
-                display: "inline-block",
-                width: 28,
-                height: 1,
-                background: "rgba(255,200,210,0.6)",
-                verticalAlign: "middle",
-              }}
-            />
-            Web Design Studio · Gorakhpur, India
-            <span
-              style={{
-                display: "inline-block",
-                width: 28,
-                height: 1,
-                background: "rgba(255,200,210,0.6)",
-                verticalAlign: "middle",
-              }}
-            />
+            Web Design Studio &nbsp;·&nbsp; Gorakhpur, India
           </motion.p>
 
           <motion.h1
@@ -186,22 +114,16 @@ export default function Home() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.06] text-white mb-8"
-            style={{ letterSpacing: "-0.025em" }}
+            className="font-display text-4xl sm:text-5xl md:text-[3.75rem] lg:text-7xl font-bold leading-[1.08] text-white mb-7"
+            style={{ letterSpacing: "-0.02em" }}
           >
-            Crafting{" "}
-            <span
-              style={{
-                background:
-                  "linear-gradient(135deg, #ffd4de 0%, #ffaec0 50%, #ff7da0 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
+            Crafting Clean,{" "}
+            <em
+              className="not-italic"
+              style={{ color: "rgba(255,255,255,0.55)" }}
             >
-              Clean, Modern
-            </span>
-            <br />
+              Modern
+            </em>{" "}
             Websites for Businesses
           </motion.h1>
 
@@ -210,8 +132,8 @@ export default function Home() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-base md:text-lg leading-relaxed mb-12 max-w-xl mx-auto"
-            style={{ color: "rgba(255,220,228,0.78)" }}
+            className="text-base md:text-lg leading-relaxed mb-11 max-w-xl mx-auto"
+            style={{ color: "rgba(255,255,255,0.72)" }}
           >
             Get your local shop online with a professional website that converts
             visitors into loyal customers.
@@ -227,11 +149,10 @@ export default function Home() {
             <Link
               to="/contact"
               data-ocid="hero.primary_button"
-              className="cta-pulse inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full font-bold text-sm tracking-wide text-white transition-all duration-200 hover:scale-[1.04]"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full text-[#872642] font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl"
               style={{
-                background:
-                  "linear-gradient(135deg, #b03460 0%, #872642 50%, #6e2038 100%)",
-                border: "1px solid rgba(255,255,255,0.2)",
+                backgroundColor: "#ffffff",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
               }}
             >
               Launch Your Website
@@ -239,11 +160,10 @@ export default function Home() {
             <Link
               to="/projects"
               data-ocid="hero.secondary_button"
-              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-semibold text-sm tracking-wide transition-all duration-200 hover:bg-white/12 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-semibold text-sm tracking-wide border transition-all duration-200 hover:bg-white/10"
               style={{
-                borderColor: "rgba(255,255,255,0.4)",
-                color: "rgba(255,255,255,0.92)",
-                border: "1px solid rgba(255,255,255,0.4)",
+                borderColor: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.9)",
               }}
             >
               View Our Work <ArrowRight size={15} />
@@ -251,193 +171,73 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Hero → Local Impact wave (fills into #3d0e1d) */}
+        {/* White scallop exit at bottom */}
         <div
-          className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]"
+          className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10"
           aria-hidden="true"
-          style={{ zIndex: 10 }}
         >
           <svg
-            viewBox="0 0 1440 80"
+            viewBox="0 0 1440 64"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
-            className="w-full"
-            style={{ height: "clamp(40px, 6vw, 80px)", display: "block" }}
+            className="w-full h-12 md:h-16"
           >
             <title>Section divider</title>
             <path
-              d="M0,40 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z"
-              fill="#3d0e1d"
+              d="M0,32 C360,64 1080,0 1440,32 L1440,64 L0,64 Z"
+              fill="#ffffff"
             />
           </svg>
         </div>
       </section>
 
       {/* ── Local Impact ─────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-28"
-        style={{ background: "#3d0e1d" }}
-      >
-        {/* Subtle radial glow */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 70% at 80% 50%, rgba(200,60,90,0.15) 0%, transparent 65%)",
-          }}
-        />
-        {/* Dot pattern overlay */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(255,200,210,1) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-
-        <div
-          className="container mx-auto px-6 max-w-4xl relative"
-          style={{ zIndex: 10 }}
-        >
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-6 max-w-3xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.65 }}
-            className="flex flex-col md:flex-row gap-10 md:gap-16 items-center"
+            transition={{ duration: 0.6 }}
           >
-            {/* Left: stat/accent block */}
             <div
-              className="flex-shrink-0 rounded-2xl text-white text-center p-10 w-full md:w-56"
-              style={{
-                background: "linear-gradient(145deg, #a83058 0%, #6e2038 100%)",
-                boxShadow:
-                  "0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)",
-              }}
-            >
-              <p
-                className="font-display font-bold leading-none mb-2"
-                style={{ fontSize: "3.5rem" }}
-              >
-                100%
-              </p>
-              <p className="text-sm font-semibold tracking-wider uppercase opacity-80">
-                Local Focus
-              </p>
-              <div
-                className="mt-4 mx-auto"
-                style={{
-                  width: 32,
-                  height: 2,
-                  background: "rgba(255,255,255,0.4)",
-                  borderRadius: 999,
-                }}
-              />
-              <p
-                className="mt-3 text-xs leading-relaxed"
-                style={{ color: "rgba(255,200,210,0.85)" }}
-              >
-                Built for businesses like yours
-              </p>
-            </div>
-
-            {/* Right: text */}
-            <div>
-              <div
-                className="w-10 h-0.5 mb-6"
-                style={{ backgroundColor: "rgba(255,150,175,0.6)" }}
-              />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
-                Your Business Deserves{" "}
-                <span style={{ color: "#ff9ab8" }}>a Digital Home.</span>
-              </h2>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ color: "rgba(255,220,228,0.82)" }}
-              >
-                In Gorakhpur and beyond, your customers are searching for you on
-                their phones right now. If you aren't online, you're invisible.
-                We bridge that gap — building websites that look like a million
-                bucks and work hard for your local business.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Local Impact → Feature Grid wave */}
-        <div
-          className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 1440 60"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            className="w-full"
-            style={{ height: "clamp(30px, 5vw, 60px)", display: "block" }}
-          >
-            <title>Section divider</title>
-            <path
-              d="M0,0 C360,60 1080,0 1440,40 L1440,60 L0,60 Z"
-              fill="#5e1a2e"
+              className="w-10 h-0.5 mx-auto mb-7"
+              style={{ backgroundColor: "#872642" }}
             />
-          </svg>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              Your Business Deserves <br className="hidden md:block" />a Digital
+              Home.
+            </h2>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              In Gorakhpur and beyond, your customers are searching for you on
+              their phones right now. If you aren't online, you're invisible. We
+              bridge that gap — building websites that look like a million bucks
+              and work hard for your local business.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Feature Grid ─────────────────────────────────────────── */}
-      <section
-        className="relative py-28 overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(160deg, #5e1a2e 0%, #872642 55%, #6e2038 100%)",
-        }}
-      >
-        {/* Decorative grid texture overlay */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, rgba(255,255,255,1) 0px, rgba(255,255,255,1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, rgba(255,255,255,1) 0px, rgba(255,255,255,1) 1px, transparent 1px, transparent 60px)",
-          }}
-        />
-        {/* Radial glow center */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,60,90,0.22) 0%, transparent 70%)",
-          }}
-        />
-
-        <div
-          className="container mx-auto px-6 max-w-5xl relative"
-          style={{ zIndex: 10 }}
-        >
+      <section style={{ backgroundColor: "#fdf6f8" }} className="py-24">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
+            transition={{ duration: 0.5 }}
             className="mb-14"
           >
             <p
-              className="text-xs font-semibold tracking-[0.22em] uppercase mb-3"
-              style={{ color: "rgba(255,200,210,0.75)" }}
+              className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+              style={{ color: "#872642" }}
             >
               Why Choose Us
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
               Built to perform.
               <br />
-              <span style={{ color: "rgba(255,190,205,0.9)" }}>
-                Designed to impress.
-              </span>
+              Designed to impress.
             </h2>
           </motion.div>
 
@@ -451,13 +251,14 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="feature-card relative bg-white rounded-2xl p-8 overflow-hidden"
-                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.22)" }}
+                style={{ boxShadow: "0 2px 12px rgba(135,38,66,0.06)" }}
               >
+                {/* Ghost numeral watermark */}
                 <span
                   className="absolute top-4 right-5 font-display font-bold select-none pointer-events-none leading-none"
                   style={{
                     fontSize: "5rem",
-                    color: "rgba(135,38,66,0.06)",
+                    color: "rgba(135,38,66,0.055)",
                     letterSpacing: "-0.04em",
                   }}
                   aria-hidden="true"
@@ -466,15 +267,7 @@ export default function Home() {
                 </span>
 
                 <div className="relative z-10">
-                  <div
-                    className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #fce8ed 0%, #ffd0da 100%)",
-                      color: "#872642",
-                      boxShadow: "0 4px 16px rgba(135,38,66,0.18)",
-                    }}
-                  >
+                  <div className="mb-5" style={{ color: "#872642" }}>
                     {f.icon}
                   </div>
                   <h3 className="font-display text-xl font-bold text-gray-900 mb-3">
@@ -488,47 +281,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        {/* Feature Grid → Portfolio wave (fills into #2d0a15) */}
-        <div
-          className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 1440 70"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            className="w-full"
-            style={{ height: "clamp(35px, 5vw, 70px)", display: "block" }}
-          >
-            <title>Section divider</title>
-            <path
-              d="M0,35 C480,70 960,0 1440,35 L1440,70 L0,70 Z"
-              fill="#2d0a15"
-            />
-          </svg>
-        </div>
       </section>
 
       {/* ── Mini Portfolio ───────────────────────────────────────── */}
-      <section
-        className="relative py-28 overflow-hidden"
-        style={{ background: "#2d0a15" }}
-      >
-        {/* Atmospheric glow */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(135,38,66,0.25) 0%, transparent 65%)",
-          }}
-        />
-
-        <div
-          className="container mx-auto px-6 max-w-5xl relative"
-          style={{ zIndex: 10 }}
-        >
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -537,14 +294,13 @@ export default function Home() {
             className="mb-14"
           >
             <p
-              className="text-xs font-semibold tracking-[0.22em] uppercase mb-3"
-              style={{ color: "rgba(255,160,185,0.85)" }}
+              className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+              style={{ color: "#872642" }}
             >
               Our Work
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
-              Helping Local Shops{" "}
-              <span style={{ color: "#ff9ab8" }}>Shine</span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
+              Helping Local Shops Shine
             </h2>
           </motion.div>
 
@@ -557,33 +313,24 @@ export default function Home() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="portfolio-card group rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}
+                className="group rounded-2xl overflow-hidden"
+                style={{ boxShadow: "0 4px 24px rgba(135,38,66,0.09)" }}
               >
-                {/* Real photo thumbnail */}
-                <div className="h-60 relative overflow-hidden">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Dark overlay for contrast */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.28) 100%)",
-                    }}
-                  />
-                  {/* Glassmorphism tag badge */}
+                {/* Thumbnail */}
+                <div
+                  className="h-52 flex items-center justify-center text-6xl relative overflow-hidden"
+                  style={{
+                    background: `linear-gradient(135deg, ${card.color}22 0%, ${card.color}44 100%)`,
+                  }}
+                >
+                  <span className="text-7xl group-hover:scale-110 transition-transform duration-500">
+                    {card.pattern}
+                  </span>
                   <span
-                    className="absolute top-4 left-4 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
+                    className="absolute top-3 left-4 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
                     style={{
-                      backgroundColor: "rgba(45,10,21,0.65)",
-                      color: "rgba(255,210,225,0.95)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                      backdropFilter: "blur(10px)",
+                      backgroundColor: "rgba(255,255,255,0.85)",
+                      color: card.color,
                     }}
                   >
                     {card.tag}
@@ -596,30 +343,22 @@ export default function Home() {
                     </h3>
                     <p className="text-gray-500 text-sm">{card.desc}</p>
                   </div>
-                  <div
-                    className="flex-shrink-0 ml-4 w-9 h-9 rounded-full flex items-center justify-center"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #872642 0%, #5e1a2e 100%)",
-                    }}
-                  >
-                    <ArrowRight size={15} className="text-white" />
-                  </div>
+                  <ArrowRight
+                    size={18}
+                    className="flex-shrink-0 ml-4"
+                    style={{ color: card.color }}
+                  />
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-10">
             <Link
               to="/projects"
               data-ocid="portfolio.see_all.link"
-              className="inline-flex items-center gap-2 font-bold text-sm tracking-wide text-white px-8 py-3.5 rounded-full transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(135,38,66,0.4)]"
-              style={{
-                background:
-                  "linear-gradient(135deg, #b03460 0%, #872642 60%, #5e1a2e 100%)",
-                boxShadow: "0 6px 28px rgba(135,38,66,0.35)",
-              }}
+              className="inline-flex items-center gap-2 font-semibold text-sm border-b-2 pb-0.5 transition-all hover:gap-3"
+              style={{ borderColor: "#872642", color: "#872642" }}
             >
               See All Projects <ArrowRight size={15} />
             </Link>
