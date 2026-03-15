@@ -2,6 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
+const LOGO =
+  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260315_183500_0000-1.png";
+
 export default function About() {
   return (
     <div className="flex flex-col">
@@ -42,7 +45,7 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Right — raspberry */}
+        {/* Right — raspberry with logo */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
@@ -55,24 +58,19 @@ export default function About() {
           <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full border border-white/10" />
           <div className="absolute top-1/3 right-8 w-32 h-32 rounded-full bg-white/5" />
 
-          {/* Big MG initials */}
-          <div className="relative z-10 text-center">
-            <p
-              className="font-display font-bold leading-none select-none"
+          {/* Logo in place of MG text */}
+          <div className="relative z-10 flex items-center justify-center w-full">
+            <img
+              src={LOGO}
+              alt="MG Media Logo"
+              className="rounded-full object-cover"
               style={{
-                fontSize: "clamp(6rem, 15vw, 10rem)",
-                color: "rgba(255,255,255,0.15)",
+                width: "clamp(180px, 30vw, 280px)",
+                height: "clamp(180px, 30vw, 280px)",
+                boxShadow:
+                  "0 0 0 4px rgba(255,255,255,0.2), 0 16px 48px rgba(0,0,0,0.3)",
               }}
-            >
-              MG
-            </p>
-            <p className="text-white/70 text-sm font-medium tracking-widest uppercase mt-2">
-              Media
-            </p>
-            <div className="mt-6 w-16 h-0.5 bg-white/30 mx-auto" />
-            <p className="text-white/60 text-sm mt-3 font-light">
-              Web Design Studio
-            </p>
+            />
           </div>
         </motion.div>
       </section>

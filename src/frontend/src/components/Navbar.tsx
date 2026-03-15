@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const LOGO =
-  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260313_094713_0000-1.png";
+  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260315_183500_0000-1.png";
 
 const navLinks = [
   { label: "Home", to: "/", ocid: "nav.home.link" },

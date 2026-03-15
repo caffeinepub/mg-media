@@ -20,13 +20,16 @@ const projects = [
   {
     title: "Restaurant Website",
     desc: "Modern digital menus and integrated online booking systems designed for the local foodie scene.",
-    emoji: "🍽️",
+    img: "/assets/generated/restaurant-hero.dim_800x500.jpg",
+    liveUrl:
+      "https://funded-flex-fso.caffeine.xyz/#caffeineAdminToken=69eeb543d0838fa622176c17435394fb9d415dcb1cf2c461eaa6d83e29c05b28",
     color: "#872642",
   },
   {
     title: "Beauty Salon",
     desc: "A beautiful, elegant design paired with a seamless booking system to keep your chairs full.",
-    emoji: "💄",
+    img: "/assets/generated/salon-hero.dim_800x500.jpg",
+    liveUrl: "https://glam-beauty-parlour-597.caffeine.xyz/",
     color: "#a34060",
   },
 ];
@@ -99,11 +102,12 @@ export default function Projects() {
                 className="rounded-xl overflow-hidden border border-raspberry-mist shadow-xs hover:shadow-raspberry transition-shadow duration-300"
                 style={{ backgroundColor: "rgba(135,38,66,0.05)" }}
               >
-                <div
-                  className="h-48 flex items-center justify-center text-6xl"
-                  style={{ backgroundColor: `${p.color}14` }}
-                >
-                  {p.emoji}
+                <div className="h-48 overflow-hidden relative">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-7">
                   <h2 className="font-display text-xl font-bold text-gray-900 mb-2">
@@ -112,14 +116,16 @@ export default function Projects() {
                   <p className="text-charcoal-soft text-sm leading-relaxed mb-6">
                     {p.desc}
                   </p>
-                  <button
-                    type="button"
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-ocid={ocids[i]}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-white text-sm font-semibold transition-opacity hover:opacity-85"
                     style={{ backgroundColor: "#872642" }}
                   >
                     Live Site <ExternalLink size={14} />
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             ))}

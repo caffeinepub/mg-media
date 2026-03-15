@@ -37,15 +37,19 @@ const portfolioCards = [
     title: "Restaurant Website",
     desc: "Modern digital menus and integrated online booking.",
     color: "#872642",
-    pattern: "🍽️",
     tag: "Food & Dining",
+    img: "/assets/generated/restaurant-hero.dim_800x500.jpg",
+    liveUrl:
+      "https://funded-flex-fso.caffeine.xyz/#caffeineAdminToken=69eeb543d0838fa622176c17435394fb9d415dcb1cf2c461eaa6d83e29c05b28",
   },
   {
     title: "Beauty Salon",
     desc: "Elegant design with seamless booking system.",
     color: "#a34060",
-    pattern: "💄",
     tag: "Beauty & Wellness",
+    img: "/assets/generated/salon-hero.dim_800x500.jpg",
+    liveUrl:
+      "https://glam-beauty-parlour-597.caffeine.xyz/#caffeineAdminToken=d06f2bb2b6b626b67872a02af0ed7d4f0dd52fd19eddf7962afdb46dd3e29c89",
   },
 ];
 
@@ -106,7 +110,7 @@ export default function Home() {
             animate="visible"
             className="text-xs font-semibold tracking-[0.22em] uppercase mb-5 text-white/60"
           >
-            Web Design Studio &nbsp;·&nbsp; Gorakhpur, India
+            Web Design Studio &nbsp;·&nbsp; MG Media
           </motion.p>
 
           <motion.h1
@@ -191,7 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Local Impact ─────────────────────────────────────────── */}
+      {/* ── Build. Grow. Scale. ──────────────────────────────────── */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-6 max-w-3xl text-center">
           <motion.div
@@ -205,14 +209,13 @@ export default function Home() {
               style={{ backgroundColor: "#872642" }}
             />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              Your Business Deserves <br className="hidden md:block" />a Digital
-              Home.
+              Build. Grow. Scale.
             </h2>
             <p className="text-gray-500 text-lg leading-relaxed">
-              In Gorakhpur and beyond, your customers are searching for you on
-              their phones right now. If you aren't online, you're invisible. We
-              bridge that gap — building websites that look like a million bucks
-              and work hard for your local business.
+              Most local businesses are invisible to the customers searching for
+              them online. We change that. At MG Media, we don't just build
+              websites; we create digital growth engines that turn clicks into
+              loyal customers for your business.
             </p>
           </motion.div>
         </div>
@@ -253,7 +256,6 @@ export default function Home() {
                 className="feature-card relative bg-white rounded-2xl p-8 overflow-hidden"
                 style={{ boxShadow: "0 2px 12px rgba(135,38,66,0.06)" }}
               >
-                {/* Ghost numeral watermark */}
                 <span
                   className="absolute top-4 right-5 font-display font-bold select-none pointer-events-none leading-none"
                   style={{
@@ -317,15 +319,12 @@ export default function Home() {
                 style={{ boxShadow: "0 4px 24px rgba(135,38,66,0.09)" }}
               >
                 {/* Thumbnail */}
-                <div
-                  className="h-52 flex items-center justify-center text-6xl relative overflow-hidden"
-                  style={{
-                    background: `linear-gradient(135deg, ${card.color}22 0%, ${card.color}44 100%)`,
-                  }}
-                >
-                  <span className="text-7xl group-hover:scale-110 transition-transform duration-500">
-                    {card.pattern}
-                  </span>
+                <div className="h-52 relative overflow-hidden">
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <span
                     className="absolute top-3 left-4 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
                     style={{
@@ -343,11 +342,18 @@ export default function Home() {
                     </h3>
                     <p className="text-gray-500 text-sm">{card.desc}</p>
                   </div>
-                  <ArrowRight
-                    size={18}
+                  <a
+                    href={card.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-ocid={
+                      i === 0 ? "home.restaurant.link" : "home.salon.link"
+                    }
                     className="flex-shrink-0 ml-4"
-                    style={{ color: card.color }}
-                  />
+                    aria-label={`Visit ${card.title}`}
+                  >
+                    <ArrowRight size={18} style={{ color: card.color }} />
+                  </a>
                 </div>
               </motion.div>
             ))}

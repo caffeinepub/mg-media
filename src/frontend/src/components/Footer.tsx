@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 
 const LOGO =
-  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260313_094713_0000-1.png";
+  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260315_183500_0000-1.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
