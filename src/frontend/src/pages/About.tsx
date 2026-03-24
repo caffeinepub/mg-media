@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 const LOGO =
-  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260315_183500_0000-1.png";
+  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260322_103554_0000-1-1.png";
 
 export default function About() {
   return (
@@ -19,12 +19,12 @@ export default function About() {
           >
             <div
               className="w-12 h-1 rounded-full mb-6"
-              style={{ backgroundColor: "#872642" }}
+              style={{ backgroundColor: "#8C52FF" }}
             />
             <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Meet the Designer
             </h1>
-            <p className="text-charcoal leading-relaxed text-lg max-w-lg">
+            <p className="text-gray-600 leading-relaxed text-lg max-w-lg">
               Hi, I am Monika Gupta, the designer behind MG Media. I am a
               passionate website designer focused on creating modern, beautiful,
               and easy-to-use websites for local businesses. My goal is to
@@ -36,8 +36,8 @@ export default function About() {
             <div className="mt-10">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-md text-white font-semibold text-sm shadow-raspberry hover:opacity-90 transition-all"
-                style={{ backgroundColor: "#872642" }}
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-md text-white font-semibold text-sm hover:opacity-90 transition-all"
+                style={{ backgroundColor: "#8C52FF" }}
               >
                 Work With Me <ArrowRight size={15} />
               </Link>
@@ -45,30 +45,29 @@ export default function About() {
           </motion.div>
         </div>
 
-        {/* Right — raspberry with logo */}
+        {/* Right — purple with logo */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center justify-center px-12 py-20 relative overflow-hidden"
-          style={{ backgroundColor: "#872642" }}
+          style={{ backgroundColor: "#8C52FF" }}
         >
           {/* Decorative circles */}
           <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full border border-white/10" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full border border-white/10" />
           <div className="absolute top-1/3 right-8 w-32 h-32 rounded-full bg-white/5" />
 
-          {/* Logo in place of MG text */}
+          {/* Single logo */}
           <div className="relative z-10 flex items-center justify-center w-full">
             <img
               src={LOGO}
               alt="MG Media Logo"
-              className="rounded-full object-cover"
+              className="object-contain"
               style={{
-                width: "clamp(180px, 30vw, 280px)",
-                height: "clamp(180px, 30vw, 280px)",
-                boxShadow:
-                  "0 0 0 4px rgba(255,255,255,0.2), 0 16px 48px rgba(0,0,0,0.3)",
+                width: "clamp(180px, 28vw, 280px)",
+                height: "clamp(180px, 28vw, 280px)",
+                boxShadow: "0 16px 48px rgba(0,0,0,0.3)",
               }}
             />
           </div>

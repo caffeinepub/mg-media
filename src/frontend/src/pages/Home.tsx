@@ -36,7 +36,7 @@ const portfolioCards = [
   {
     title: "Restaurant Website",
     desc: "Modern digital menus and integrated online booking.",
-    color: "#872642",
+    color: "#8C52FF",
     tag: "Food & Dining",
     img: "/assets/generated/restaurant-hero.dim_800x500.jpg",
     liveUrl:
@@ -45,7 +45,7 @@ const portfolioCards = [
   {
     title: "Beauty Salon",
     desc: "Elegant design with seamless booking system.",
-    color: "#a34060",
+    color: "#a87aff",
     tag: "Beauty & Wellness",
     img: "/assets/generated/salon-hero.dim_800x500.jpg",
     liveUrl:
@@ -61,7 +61,7 @@ export default function Home() {
         className="relative overflow-hidden hero-grain"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, #a0304f 0%, #872642 45%, #5e1a2e 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, #a87aff 0%, #8C52FF 45%, #5a2eb5 100%)",
           minHeight: "88vh",
           display: "flex",
           alignItems: "center",
@@ -153,9 +153,10 @@ export default function Home() {
             <Link
               to="/contact"
               data-ocid="hero.primary_button"
-              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full text-[#872642] font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl"
+              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl"
               style={{
                 backgroundColor: "#ffffff",
+                color: "#8C52FF",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
               }}
             >
@@ -206,7 +207,7 @@ export default function Home() {
           >
             <div
               className="w-10 h-0.5 mx-auto mb-7"
-              style={{ backgroundColor: "#872642" }}
+              style={{ backgroundColor: "#8C52FF" }}
             />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
               Build. Grow. Scale.
@@ -222,7 +223,7 @@ export default function Home() {
       </section>
 
       {/* ── Feature Grid ─────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#fdf6f8" }} className="py-24">
+      <section style={{ backgroundColor: "#f5f0ff" }} className="py-24">
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -233,7 +234,7 @@ export default function Home() {
           >
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-              style={{ color: "#872642" }}
+              style={{ color: "#8C52FF" }}
             >
               Why Choose Us
             </p>
@@ -254,13 +255,13 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="feature-card relative bg-white rounded-2xl p-8 overflow-hidden"
-                style={{ boxShadow: "0 2px 12px rgba(135,38,66,0.06)" }}
+                style={{ boxShadow: "0 2px 12px rgba(140,82,255,0.06)" }}
               >
                 <span
                   className="absolute top-4 right-5 font-display font-bold select-none pointer-events-none leading-none"
                   style={{
                     fontSize: "5rem",
-                    color: "rgba(135,38,66,0.055)",
+                    color: "rgba(140,82,255,0.055)",
                     letterSpacing: "-0.04em",
                   }}
                   aria-hidden="true"
@@ -269,7 +270,7 @@ export default function Home() {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="mb-5" style={{ color: "#872642" }}>
+                  <div className="mb-5" style={{ color: "#8C52FF" }}>
                     {f.icon}
                   </div>
                   <h3 className="font-display text-xl font-bold text-gray-900 mb-3">
@@ -297,7 +298,7 @@ export default function Home() {
           >
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
-              style={{ color: "#872642" }}
+              style={{ color: "#8C52FF" }}
             >
               Our Work
             </p>
@@ -316,7 +317,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="group rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 4px 24px rgba(135,38,66,0.09)" }}
+                style={{ boxShadow: "0 4px 24px rgba(140,82,255,0.09)" }}
               >
                 {/* Thumbnail */}
                 <div className="h-52 relative overflow-hidden">
@@ -364,7 +365,7 @@ export default function Home() {
               to="/projects"
               data-ocid="portfolio.see_all.link"
               className="inline-flex items-center gap-2 font-semibold text-sm border-b-2 pb-0.5 transition-all hover:gap-3"
-              style={{ borderColor: "#872642", color: "#872642" }}
+              style={{ borderColor: "#8C52FF", color: "#8C52FF" }}
             >
               See All Projects <ArrowRight size={15} />
             </Link>

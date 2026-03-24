@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 
 const LOGO =
-  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260315_183500_0000-1.png";
+  "/assets/uploads/Red-and-Beige-Simple-Modern-Bold-Typographic-Fashion-Store-Logo_20260322_103554_0000-1-1.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -10,12 +10,12 @@ export default function Footer() {
     typeof window !== "undefined" ? window.location.hostname : "";
 
   return (
-    <footer style={{ backgroundColor: "#872642" }} className="text-white">
+    <footer style={{ backgroundColor: "#8C52FF" }} className="text-white">
       <div className="container mx-auto px-6 py-12 flex flex-col items-center gap-6 text-center">
         <img
           src={LOGO}
           alt="MG Media Logo"
-          className="w-16 h-16 rounded-full object-cover border-2 border-white/40"
+          className="w-16 h-16 object-contain"
         />
         <p className="font-display text-xl font-bold tracking-wide">MG Media</p>
         <a

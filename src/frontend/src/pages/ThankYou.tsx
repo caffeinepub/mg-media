@@ -13,26 +13,26 @@ export default function ThankYou() {
         >
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8"
-            style={{ backgroundColor: "rgba(135,38,66,0.1)" }}
+            style={{ backgroundColor: "rgba(140,82,255,0.1)" }}
           >
-            <CheckCircle size={40} style={{ color: "#872642" }} />
+            <CheckCircle size={40} style={{ color: "#8C52FF" }} />
           </div>
           <h1
             className="font-display text-3xl md:text-4xl font-bold mb-4"
-            style={{ color: "#872642" }}
+            style={{ color: "#8C52FF" }}
           >
             Thank You! Your vision is in safe hands.
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed mb-10">
             We've received your details and will reach out to you at{" "}
-            <strong className="text-charcoal">monikamkg0725@gmail.com</strong>{" "}
+            <strong className="text-gray-800">monikamkg0725@gmail.com</strong>{" "}
             within 24 hours.
           </p>
           <Link
             to="/"
             data-ocid="thankyou.home.button"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-white font-semibold text-sm shadow-raspberry hover:opacity-90 transition-all"
-            style={{ backgroundColor: "#872642" }}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md text-white font-semibold text-sm hover:opacity-90 transition-all"
+            style={{ backgroundColor: "#8C52FF" }}
           >
             <ArrowLeft size={16} /> Back to Home
           </Link>

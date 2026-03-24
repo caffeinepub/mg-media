@@ -23,14 +23,15 @@ const projects = [
     img: "/assets/generated/restaurant-hero.dim_800x500.jpg",
     liveUrl:
       "https://funded-flex-fso.caffeine.xyz/#caffeineAdminToken=69eeb543d0838fa622176c17435394fb9d415dcb1cf2c461eaa6d83e29c05b28",
-    color: "#872642",
+    color: "#8C52FF",
   },
   {
     title: "Beauty Salon",
     desc: "A beautiful, elegant design paired with a seamless booking system to keep your chairs full.",
     img: "/assets/generated/salon-hero.dim_800x500.jpg",
-    liveUrl: "https://glam-beauty-parlour-597.caffeine.xyz/",
-    color: "#a34060",
+    liveUrl:
+      "https://glam-beauty-parlour-597.caffeine.xyz/#caffeineAdminToken=d06f2bb2b6b626b67872a02af0ed7d4f0dd52fd19eddf7962afdb46dd3e29c89",
+    color: "#a87aff",
   },
 ];
 
@@ -72,11 +73,11 @@ export default function Projects() {
           >
             <div
               className="w-12 h-1 rounded-full mx-auto mb-4"
-              style={{ backgroundColor: "#872642" }}
+              style={{ backgroundColor: "#8C52FF" }}
             />
             <h1
               className="font-display text-4xl md:text-5xl font-bold leading-tight"
-              style={{ color: "#872642" }}
+              style={{ color: "#8C52FF" }}
             >
               Explore Our Project
             </h1>
@@ -99,8 +100,11 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden border border-raspberry-mist shadow-xs hover:shadow-raspberry transition-shadow duration-300"
-                style={{ backgroundColor: "rgba(135,38,66,0.05)" }}
+                className="rounded-xl overflow-hidden border shadow-xs hover:shadow-md transition-shadow duration-300"
+                style={{
+                  backgroundColor: "rgba(140,82,255,0.05)",
+                  borderColor: "rgba(140,82,255,0.15)",
+                }}
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
@@ -113,7 +117,7 @@ export default function Projects() {
                   <h2 className="font-display text-xl font-bold text-gray-900 mb-2">
                     {p.title}
                   </h2>
-                  <p className="text-charcoal-soft text-sm leading-relaxed mb-6">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
                     {p.desc}
                   </p>
                   <a
@@ -122,7 +126,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     data-ocid={ocids[i]}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-white text-sm font-semibold transition-opacity hover:opacity-85"
-                    style={{ backgroundColor: "#872642" }}
+                    style={{ backgroundColor: "#8C52FF" }}
                   >
                     Live Site <ExternalLink size={14} />
                   </a>
@@ -145,11 +149,11 @@ export default function Projects() {
           >
             <div
               className="w-12 h-1 rounded-full mx-auto mb-4"
-              style={{ backgroundColor: "#872642" }}
+              style={{ backgroundColor: "#8C52FF" }}
             />
             <h2
               className="font-display text-3xl md:text-4xl font-bold"
-              style={{ color: "#872642" }}
+              style={{ color: "#8C52FF" }}
             >
               Our Services
             </h2>
@@ -168,8 +172,8 @@ export default function Projects() {
                 <div
                   className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
                   style={{
-                    backgroundColor: "rgba(135,38,66,0.1)",
-                    color: "#872642",
+                    backgroundColor: "rgba(140,82,255,0.1)",
+                    color: "#8C52FF",
                   }}
                 >
                   {s.icon}
