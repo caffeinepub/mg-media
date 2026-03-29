@@ -21,6 +21,118 @@ const emptyForm = {
   message: "",
 };
 
+// ── Per-plan design tokens ──────────────────────────────────────────────────
+const starterStyle = {
+  card: {
+    background: "#f8f6ff",
+    border: "2px solid #e4daff",
+    color: "#111827",
+    boxShadow: "0 4px 20px rgba(140,82,255,0.06)",
+  },
+  topBorder: "linear-gradient(90deg,#a78bfa 0%,#8c52ff 50%,#c4b5fd 100%)",
+  iconBg: { background: "rgba(140,82,255,0.1)" },
+  tagBg: { background: "rgba(140,82,255,0.1)", color: "#8c52ff" },
+  pagesBadge: {
+    background: "rgba(140,82,255,0.08)",
+    color: "#8c52ff",
+    border: "1px solid rgba(140,82,255,0.2)",
+  },
+  price: "#0f172a",
+  priceUnit: "#64748b",
+  desc: "#4b5563",
+  label: "#6b7280",
+  featureText: "#374151",
+  mutedText: "#9ca3af",
+  checkBg: { background: "rgba(140,82,255,0.1)" },
+  checkColor: "#8c52ff",
+  xBg: { background: "#f3f4f6" },
+  xColor: "#d1d5db",
+  btn: { background: "#ffffff", color: "#8c52ff", border: "2px solid #8c52ff" },
+  hoverGlow: "rgba(140,82,255,0.15)",
+  cornerDecor: true,
+};
+
+const professionalStyle = {
+  card: {
+    background: "#8c52ff",
+    border: "2px solid #8c52ff",
+    color: "white",
+    boxShadow: "0 25px 50px -12px rgba(140,82,255,0.45)",
+  },
+  sheen: true,
+  iconBg: { background: "rgba(255,255,255,0.2)" },
+  tagBg: {
+    background: "rgba(255,255,255,0.18)",
+    color: "white",
+    border: "1px solid rgba(255,255,255,0.3)",
+  },
+  pagesBadge: {
+    background: "rgba(255,255,255,0.18)",
+    color: "white",
+    border: "1px solid rgba(255,255,255,0.3)",
+  },
+  price: "#ffffff",
+  priceUnit: "rgba(255,255,255,0.7)",
+  desc: "rgba(255,255,255,0.85)",
+  label: "rgba(255,255,255,0.6)",
+  featureText: "#ffffff",
+  mutedText: "rgba(255,255,255,0.45)",
+  checkBg: { background: "rgba(255,255,255,0.25)" },
+  checkColor: "white",
+  xBg: { background: "rgba(255,255,255,0.1)" },
+  xColor: "rgba(255,255,255,0.35)",
+  btn: {
+    background: "#ffffff",
+    color: "#8c52ff",
+    boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+  },
+  hoverGlow: "rgba(140,82,255,0.3)",
+};
+
+const premiumStyle = {
+  card: {
+    background: "#0f0a1e",
+    border: "2px solid #2d2250",
+    color: "white",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+  },
+  iconBg: { background: "rgba(245,200,66,0.15)" },
+  tagBg: {
+    background: "rgba(245,200,66,0.12)",
+    color: "#f5c842",
+    border: "1px solid rgba(245,200,66,0.3)",
+  },
+  pagesBadge: {
+    background: "rgba(245,200,66,0.1)",
+    color: "#f5c842",
+    border: "1px solid rgba(245,200,66,0.25)",
+  },
+  price: "#f5c842",
+  priceUnit: "rgba(245,200,66,0.7)",
+  desc: "rgba(255,255,255,0.7)",
+  label: "rgba(255,255,255,0.4)",
+  featureText: "rgba(255,255,255,0.9)",
+  mutedText: "rgba(255,255,255,0.3)",
+  checkBg: { background: "rgba(245,200,66,0.15)" },
+  checkColor: "#f5c842",
+  xBg: { background: "rgba(255,255,255,0.05)" },
+  xColor: "rgba(255,255,255,0.2)",
+  btn: { background: "#f5c842", color: "#0f0a1e" },
+  hoverGlow: "rgba(245,200,66,0.2)",
+  goldGlow: true,
+};
+
+type PlanStyle =
+  | typeof starterStyle
+  | typeof professionalStyle
+  | typeof premiumStyle;
+
+function getPlanStyle(id: string): PlanStyle {
+  if (id === "professional") return professionalStyle;
+  if (id === "premium") return premiumStyle;
+  return starterStyle;
+}
+
 export default function PricingSection() {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>("professional");
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
@@ -143,185 +255,226 @@ export default function PricingSection() {
       {/* Pricing Cards Grid */}
       <div className="max-w-7xl mx-auto mb-20">
         <div className="grid md:grid-cols-3 gap-8 lg:gap-6 items-center">
-          {plans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`relative group transition-all duration-300 transform ${
-                plan.highlighted ? "md:scale-105" : ""
-              }`}
-              onMouseEnter={() => setHoveredPlan(plan.id)}
-              onMouseLeave={() => setHoveredPlan(null)}
-            >
-              {plan.highlighted && (
-                <div
-                  className="absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: "rgba(140, 82, 255, 0.2)" }}
-                />
-              )}
+          {plans.map((plan) => {
+            const s = getPlanStyle(plan.id);
+            const isPro = plan.id === "professional";
+            const isPremium = plan.id === "premium";
+            const isStarter = plan.id === "starter";
+
+            return (
               <div
-                className="relative h-full rounded-3xl overflow-hidden backdrop-blur-sm transition-all duration-300"
-                style={
-                  plan.highlighted
-                    ? {
-                        background: "#8c52ff",
-                        color: "white",
-                        border: "2px solid #8c52ff",
-                        boxShadow: "0 20px 25px -5px rgba(140, 82, 255, 0.2)",
-                      }
-                    : {
-                        background: "#ffffff",
-                        border: "2px solid #e5e7eb",
-                        color: "#111827",
-                      }
-                }
+                key={plan.id}
+                className={`relative group transition-all duration-300 transform ${
+                  isPro ? "md:scale-105" : ""
+                }`}
+                onMouseEnter={() => setHoveredPlan(plan.id)}
+                onMouseLeave={() => setHoveredPlan(null)}
               >
-                {plan.highlighted && (
-                  <div
-                    className="absolute top-6 right-6 flex items-center gap-2 px-4 py-2 rounded-full border"
-                    style={{
-                      background: "rgba(255, 255, 255, 0.2)",
-                      borderColor: "rgba(255, 255, 255, 0.3)",
-                      color: "white",
-                    }}
-                  >
-                    <Zap className="w-4 h-4" />
-                    <span className="text-sm font-bold">{plan.tag}</span>
-                  </div>
-                )}
-                <div className="p-8 md:p-10 flex flex-col h-full">
-                  <div className="mb-8">
-                    <div className="text-5xl mb-4">{plan.icon}</div>
-                    <h3 className="text-4xl font-bold mb-2">{plan.name}</h3>
-                    {!plan.highlighted && (
-                      <p className="text-sm text-purple-600 font-semibold mb-3">
-                        {plan.tag}
-                      </p>
-                    )}
-                    <p
-                      className={`text-base mb-6 ${plan.highlighted ? "text-white/90" : "text-slate-600"}`}
+                {/* Hover glow layer */}
+                <div
+                  className="absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{ background: s.hoverGlow }}
+                />
+
+                {/* Card */}
+                <div
+                  className="relative h-full rounded-3xl overflow-hidden transition-all duration-300 group-hover:-translate-y-2"
+                  style={s.card}
+                >
+                  {/* ── Starter: gradient top border + diagonal bg decor ── */}
+                  {isStarter && (
+                    <>
+                      <div
+                        className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl"
+                        style={{
+                          background: (starterStyle as typeof starterStyle)
+                            .topBorder,
+                        }}
+                      />
+                      {/* soft radial bg decor corner */}
+                      <div
+                        className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full pointer-events-none"
+                        style={{
+                          background:
+                            "radial-gradient(circle, rgba(140,82,255,0.07) 0%, transparent 70%)",
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {/* ── Professional: glossy sheen overlay ── */}
+                  {isPro && (
+                    <>
+                      <div
+                        className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
+                        style={{
+                          background:
+                            "radial-gradient(circle at top left, rgba(255,255,255,0.18) 0%, transparent 65%)",
+                        }}
+                      />
+                      {/* large faint circle bottom-right */}
+                      <div
+                        className="absolute -bottom-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
+                        style={{ border: "2px solid rgba(255,255,255,0.1)" }}
+                      />
+                      <div
+                        className="absolute -bottom-8 -right-8 w-36 h-36 rounded-full pointer-events-none"
+                        style={{ border: "2px solid rgba(255,255,255,0.07)" }}
+                      />
+                    </>
+                  )}
+
+                  {/* ── Premium: faint gold glow corner ── */}
+                  {isPremium && (
+                    <div
+                      className="absolute -top-12 -right-12 w-48 h-48 rounded-full pointer-events-none"
+                      style={{
+                        background:
+                          "radial-gradient(circle, rgba(245,200,66,0.06) 0%, transparent 70%)",
+                      }}
+                    />
+                  )}
+
+                  {/* ── Professional badge ── */}
+                  {isPro && (
+                    <div
+                      className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1.5 rounded-full z-10"
+                      style={
+                        (professionalStyle as typeof professionalStyle).tagBg
+                      }
                     >
+                      <Zap className="w-3.5 h-3.5" />
+                      <span className="text-xs font-bold">{plan.tag}</span>
+                    </div>
+                  )}
+
+                  {/* Card body */}
+                  <div className="p-8 md:p-10 flex flex-col h-full relative z-10">
+                    {/* Icon */}
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5"
+                      style={s.iconBg}
+                    >
+                      {plan.icon}
+                    </div>
+
+                    {/* Name */}
+                    <h3
+                      className="text-3xl font-bold mb-1"
+                      style={{
+                        color: isPremium
+                          ? "#f5c842"
+                          : isPro
+                            ? "white"
+                            : "#0f172a",
+                      }}
+                    >
+                      {plan.name}
+                    </h3>
+
+                    {/* Tag pill (non-pro plans) */}
+                    {!isPro && (
+                      <span
+                        className="inline-block self-start px-3 py-1 rounded-full text-xs font-semibold mb-3"
+                        style={s.tagBg}
+                      >
+                        {plan.tag}
+                      </span>
+                    )}
+
+                    {/* Description */}
+                    <p className="text-sm mb-5" style={{ color: s.desc }}>
                       {plan.description}
                     </p>
-                    <div className="flex items-baseline gap-2 mb-6">
-                      <span className="text-5xl font-bold">₹{plan.price}</span>
+
+                    {/* Price */}
+                    <div className="flex items-baseline gap-1.5 mb-4">
                       <span
-                        className={`text-base ${plan.highlighted ? "text-white/70" : "text-slate-500"}`}
+                        className="text-5xl font-bold"
+                        style={{ color: s.price }}
                       >
+                        ₹{plan.price}
+                      </span>
+                      <span className="text-sm" style={{ color: s.priceUnit }}>
                         /project
                       </span>
                     </div>
+
+                    {/* Pages badge */}
                     <div
-                      className="inline-block px-6 py-3 rounded-xl text-sm font-bold mb-8"
-                      style={
-                        plan.highlighted
-                          ? {
-                              background: "rgba(255, 255, 255, 0.2)",
-                              border: "1px solid rgba(255, 255, 255, 0.3)",
-                              color: "white",
-                            }
-                          : {
-                              background: "rgba(140, 82, 255, 0.1)",
-                              color: "#8c52ff",
-                            }
-                      }
+                      className="inline-block self-start px-4 py-2 rounded-xl text-xs font-bold mb-7"
+                      style={s.pagesBadge}
                     >
                       {plan.pages}
                     </div>
-                  </div>
-                  <button
-                    type="button"
-                    data-ocid={`pricing.${plan.id}.button`}
-                    className="w-full py-4 px-6 rounded-2xl font-bold mb-8 transition-all duration-300 transform hover:-translate-y-1"
-                    style={
-                      plan.highlighted
-                        ? {
-                            background: "#ffffff",
-                            color: "#8c52ff",
-                            boxShadow:
-                              "0 10px 25px -5px rgba(140, 82, 255, 0.2)",
-                          }
-                        : { background: "#8c52ff", color: "#ffffff" }
-                    }
-                    onClick={() => setSelectedPlan(plan)}
-                  >
-                    Get Started
-                  </button>
-                  <div className="space-y-4 flex-1">
-                    <p
-                      className="text-xs font-bold uppercase tracking-wider mb-6"
-                      style={
-                        plan.highlighted
-                          ? { color: "rgba(255, 255, 255, 0.7)" }
-                          : { color: "#6b7280" }
-                      }
+
+                    {/* CTA Button */}
+                    <button
+                      type="button"
+                      data-ocid={`pricing.${plan.id}.button`}
+                      className="w-full py-4 px-6 rounded-2xl font-bold mb-7 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+                      style={s.btn}
+                      onClick={() => setSelectedPlan(plan)}
                     >
-                      What&apos;s Included
-                    </p>
-                    {plan.features.map((feature) => (
-                      <div
-                        key={feature.text}
-                        className="flex items-start gap-3"
+                      Get Started
+                    </button>
+
+                    {/* Features list */}
+                    <div className="space-y-3 flex-1">
+                      <p
+                        className="text-xs font-bold uppercase tracking-widest mb-4"
+                        style={{ color: s.label }}
                       >
-                        {feature.included ? (
-                          <div
-                            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                            style={
-                              plan.highlighted
-                                ? { background: "rgba(255, 255, 255, 0.3)" }
-                                : { background: "rgba(140, 82, 255, 0.1)" }
-                            }
-                          >
-                            <Check
-                              className="w-4 h-4"
-                              style={{
-                                color: plan.highlighted ? "white" : "#8c52ff",
-                              }}
-                            />
-                          </div>
-                        ) : (
-                          <div
-                            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                            style={
-                              plan.highlighted
-                                ? { background: "rgba(255, 255, 255, 0.1)" }
-                                : { background: "#f3f4f6" }
-                            }
-                          >
-                            <X
-                              className="w-4 h-4"
-                              style={{
-                                color: plan.highlighted
-                                  ? "rgba(255, 255, 255, 0.4)"
-                                  : "#d1d5db",
-                              }}
-                            />
-                          </div>
-                        )}
-                        <span
-                          className="text-sm"
-                          style={
-                            feature.included
-                              ? {
-                                  color: plan.highlighted ? "white" : "#374151",
-                                  fontWeight: "500",
-                                }
-                              : {
-                                  color: plan.highlighted
-                                    ? "rgba(255, 255, 255, 0.5)"
-                                    : "#9ca3af",
-                                  textDecoration: "line-through",
-                                }
-                          }
+                        What&apos;s Included
+                      </p>
+
+                      {plan.features.map((feature) => (
+                        <div
+                          key={feature.text}
+                          className="flex items-start gap-3"
                         >
-                          {feature.text}
-                        </span>
-                      </div>
-                    ))}
+                          {feature.included ? (
+                            <div
+                              className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                              style={s.checkBg}
+                            >
+                              <Check
+                                className="w-3 h-3"
+                                style={{ color: s.checkColor }}
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                              style={s.xBg}
+                            >
+                              <X
+                                className="w-3 h-3"
+                                style={{ color: s.xColor }}
+                              />
+                            </div>
+                          )}
+                          <span
+                            className="text-sm leading-snug"
+                            style={
+                              feature.included
+                                ? { color: s.featureText, fontWeight: 500 }
+                                : {
+                                    color: s.mutedText,
+                                    textDecoration: "line-through",
+                                  }
+                            }
+                          >
+                            {feature.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
