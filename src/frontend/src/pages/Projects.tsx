@@ -63,9 +63,8 @@ const services = [
 export default function Projects() {
   return (
     <div className="flex flex-col">
-      {/* Header */}
-      <section className="bg-white py-20 border-b border-gray-100">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,22 +75,21 @@ export default function Projects() {
               style={{ backgroundColor: "#8C52FF" }}
             />
             <h1
-              className="font-display text-4xl md:text-5xl font-bold leading-tight"
+              className="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight"
               style={{ color: "#8C52FF" }}
             >
               Explore Our Project
             </h1>
-            <p className="mt-3 text-gray-500 text-lg">
+            <p className="mt-3 text-gray-500 text-base sm:text-lg">
               Helping Local Shops Shine Online
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Project Grid */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <section className="bg-gray-50 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {projects.map((p, i) => (
               <motion.div
                 key={p.title}
@@ -106,14 +104,14 @@ export default function Projects() {
                   borderColor: "rgba(140,82,255,0.15)",
                 }}
               >
-                <div className="h-48 overflow-hidden relative">
+                <div className="h-52 sm:h-56 overflow-hidden relative">
                   <img
                     src={p.img}
                     alt={p.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-7">
+                <div className="p-5 sm:p-7">
                   <h2 className="font-display text-xl font-bold text-gray-900 mb-2">
                     {p.title}
                   </h2>
@@ -125,7 +123,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-ocid={ocids[i]}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-white text-sm font-semibold transition-opacity hover:opacity-85"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-semibold transition-opacity hover:opacity-85"
                     style={{ backgroundColor: "#8C52FF" }}
                   >
                     Live Site <ExternalLink size={14} />
@@ -137,28 +135,27 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Our Services */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-6 max-w-4xl">
+      <section className="bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-10 sm:mb-12"
           >
             <div
               className="w-12 h-1 rounded-full mx-auto mb-4"
               style={{ backgroundColor: "#8C52FF" }}
             />
             <h2
-              className="font-display text-3xl md:text-4xl font-bold"
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold"
               style={{ color: "#8C52FF" }}
             >
               Our Services
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -167,10 +164,10 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="flex gap-5 p-6 rounded-xl border border-gray-100 bg-gray-50 hover:shadow-xs transition-shadow"
+                className="flex gap-4 sm:gap-5 p-5 sm:p-6 rounded-xl border border-gray-100 bg-gray-50 hover:shadow-xs transition-shadow"
               >
                 <div
-                  className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+                  className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center"
                   style={{
                     backgroundColor: "rgba(140,82,255,0.1)",
                     color: "#8C52FF",

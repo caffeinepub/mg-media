@@ -42,22 +42,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#8C52FF" }}>
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-4 sm:px-6 py-16 md:py-20">
         <div className="max-w-2xl mx-auto">
-          {/* Heading */}
-          <div className="text-center mb-12">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-3">
+          <div className="text-center mb-10 sm:mb-12">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
               Ready to Start Your Project?
             </h1>
-            <p className="text-white/70 text-lg">
-              Let's build something extraordinary together.
+            <p className="text-white/70 text-base sm:text-lg">
+              Let’s build something extraordinary together.
             </p>
           </div>
 
-          {/* Form card */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              {/* Name */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-5 sm:gap-6"
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -74,7 +74,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={set("name")}
                   placeholder="Your full name"
-                  className="w-full px-4 py-3 rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
+                  className="w-full px-4 py-3 min-h-[44px] rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
                   style={
                     {
                       borderColor: "#8C52FF",
@@ -84,7 +84,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label
                   htmlFor="phone"
@@ -100,7 +99,7 @@ export default function Contact() {
                   value={form.phone}
                   onChange={set("phone")}
                   placeholder="+91 98765 43210"
-                  className="w-full px-4 py-3 rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
+                  className="w-full px-4 py-3 min-h-[44px] rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
                   style={
                     {
                       borderColor: "#8C52FF",
@@ -110,7 +109,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -127,7 +125,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={set("email")}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
+                  className="w-full px-4 py-3 min-h-[44px] rounded-md text-sm text-gray-800 bg-white border focus:outline-none focus:ring-2 transition-all"
                   style={
                     {
                       borderColor: "#8C52FF",
@@ -137,7 +135,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Message */}
               <div>
                 <label
                   htmlFor="message"
@@ -176,12 +173,8 @@ export default function Contact() {
                 type="submit"
                 data-ocid="contact.submit_button"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-md font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-                style={{
-                  backgroundColor: "white",
-                  color: "#8C52FF",
-                  border: "2px solid #8C52FF",
-                }}
+                className="w-full flex items-center justify-center gap-2 py-3.5 min-h-[44px] rounded-full font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-white"
+                style={{ backgroundColor: "#8C52FF" }}
               >
                 {loading && <Loader2 size={16} className="animate-spin" />}
                 {loading ? "Sending..." : "Send Message"}
@@ -189,9 +182,8 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Get In Touch */}
-          <div className="mt-12 text-center">
-            <h2 className="font-display text-2xl font-bold text-white mb-4">
+          <div className="mt-10 sm:mt-12 text-center">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-4">
               Get In Touch
             </h2>
             <p className="text-white/80 text-base">Monika Gupta</p>

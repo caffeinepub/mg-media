@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Search, Smartphone, Zap } from "lucide-react";
 import { motion } from "motion/react";
+import PricingSection from "../components/PricingSection";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -56,7 +57,7 @@ const portfolioCards = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      {/* ── Hero ─────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section
         className="relative overflow-hidden hero-grain"
         style={{
@@ -67,7 +68,6 @@ export default function Home() {
           alignItems: "center",
         }}
       >
-        {/* Ghost typographic watermark */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden"
           aria-hidden="true"
@@ -75,7 +75,7 @@ export default function Home() {
           <span
             className="font-display font-bold leading-none"
             style={{
-              fontSize: "clamp(10rem, 28vw, 22rem)",
+              fontSize: "clamp(6rem, 28vw, 22rem)",
               color: "rgba(255,255,255,0.04)",
               letterSpacing: "-0.04em",
               whiteSpace: "nowrap",
@@ -84,8 +84,6 @@ export default function Home() {
             MG MEDIA
           </span>
         </div>
-
-        {/* Decorative corner rings */}
         <div
           aria-hidden="true"
           className="absolute -top-32 -left-32 w-80 h-80 rounded-full pointer-events-none"
@@ -96,13 +94,8 @@ export default function Home() {
           className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
           style={{ border: "1px solid rgba(255,255,255,0.05)" }}
         />
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 rounded-full pointer-events-none"
-          style={{ background: "rgba(255,255,255,0.02)" }}
-        />
 
-        <div className="container mx-auto px-6 py-28 md:py-40 text-center max-w-4xl relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 py-24 md:py-40 text-center max-w-4xl relative z-10">
           <motion.p
             custom={0}
             variants={fadeUp}
@@ -112,13 +105,12 @@ export default function Home() {
           >
             Web Design Studio &nbsp;·&nbsp; MG Media
           </motion.p>
-
           <motion.h1
             custom={1}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="font-display text-4xl sm:text-5xl md:text-[3.75rem] lg:text-7xl font-bold leading-[1.08] text-white mb-7"
+            className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.08] text-white mb-7"
             style={{ letterSpacing: "-0.02em" }}
           >
             Crafting Clean,{" "}
@@ -130,30 +122,28 @@ export default function Home() {
             </em>{" "}
             Websites for Businesses
           </motion.h1>
-
           <motion.p
             custom={2}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-base md:text-lg leading-relaxed mb-11 max-w-xl mx-auto"
+            className="text-sm sm:text-base md:text-lg leading-relaxed mb-11 max-w-xl mx-auto"
             style={{ color: "rgba(255,255,255,0.72)" }}
           >
             Get your local shop online with a professional website that converts
             visitors into loyal customers.
           </motion.p>
-
           <motion.div
             custom={3}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center"
           >
             <Link
               to="/contact"
               data-ocid="hero.primary_button"
-              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl w-full sm:w-auto"
               style={{
                 backgroundColor: "#ffffff",
                 color: "#8C52FF",
@@ -165,7 +155,7 @@ export default function Home() {
             <Link
               to="/projects"
               data-ocid="hero.secondary_button"
-              className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-semibold text-sm tracking-wide border transition-all duration-200 hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-sm tracking-wide border transition-all duration-200 hover:bg-white/10 w-full sm:w-auto"
               style={{
                 borderColor: "rgba(255,255,255,0.5)",
                 color: "rgba(255,255,255,0.9)",
@@ -176,7 +166,6 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* White scallop exit at bottom */}
         <div
           className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10"
           aria-hidden="true"
@@ -196,9 +185,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Build. Grow. Scale. ──────────────────────────────────── */}
-      <section className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
+      {/* Pricing Section — right below the hero */}
+      <PricingSection />
+
+      {/* Build. Grow. Scale. */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -209,10 +201,10 @@ export default function Home() {
               className="w-10 h-0.5 mx-auto mb-7"
               style={{ backgroundColor: "#8C52FF" }}
             />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
               Build. Grow. Scale.
             </h2>
-            <p className="text-gray-500 text-lg leading-relaxed">
+            <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
               Most local businesses are invisible to the customers searching for
               them online. We change that. At MG Media, we don't just build
               websites; we create digital growth engines that turn clicks into
@@ -222,15 +214,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Feature Grid ─────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#f5f0ff" }} className="py-24">
-        <div className="container mx-auto px-6 max-w-5xl">
+      {/* Feature Grid */}
+      <section
+        style={{ backgroundColor: "#f5f0ff" }}
+        className="py-16 md:py-24"
+      >
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-12 md:mb-14"
           >
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
@@ -238,14 +233,13 @@ export default function Home() {
             >
               Why Choose Us
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
               Built to perform.
               <br />
               Designed to impress.
             </h2>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -254,7 +248,7 @@ export default function Home() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="feature-card relative bg-white rounded-2xl p-8 overflow-hidden"
+                className="feature-card relative bg-white rounded-2xl p-7 sm:p-8 overflow-hidden"
                 style={{ boxShadow: "0 2px 12px rgba(140,82,255,0.06)" }}
               >
                 <span
@@ -268,7 +262,6 @@ export default function Home() {
                 >
                   {f.num}
                 </span>
-
                 <div className="relative z-10">
                   <div className="mb-5" style={{ color: "#8C52FF" }}>
                     {f.icon}
@@ -286,15 +279,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Mini Portfolio ───────────────────────────────────────── */}
-      <section className="bg-white py-24">
-        <div className="container mx-auto px-6 max-w-5xl">
+      {/* Mini Portfolio */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-12 md:mb-14"
           >
             <p
               className="text-xs font-semibold tracking-[0.2em] uppercase mb-3"
@@ -302,12 +295,11 @@ export default function Home() {
             >
               Our Work
             </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
               Helping Local Shops Shine
             </h2>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {portfolioCards.map((card, i) => (
               <motion.div
                 key={card.title}
@@ -319,8 +311,7 @@ export default function Home() {
                 className="group rounded-2xl overflow-hidden"
                 style={{ boxShadow: "0 4px 24px rgba(140,82,255,0.09)" }}
               >
-                {/* Thumbnail */}
-                <div className="h-52 relative overflow-hidden">
+                <div className="h-52 sm:h-64 relative overflow-hidden">
                   <img
                     src={card.img}
                     alt={card.title}
@@ -336,12 +327,14 @@ export default function Home() {
                     {card.tag}
                   </span>
                 </div>
-                <div className="bg-white p-7 flex items-center justify-between">
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-gray-900 mb-1">
+                <div className="bg-white p-5 sm:p-7 flex items-center justify-between gap-4">
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg font-bold text-gray-900 mb-1 truncate">
                       {card.title}
                     </h3>
-                    <p className="text-gray-500 text-sm">{card.desc}</p>
+                    <p className="text-gray-500 text-sm line-clamp-2">
+                      {card.desc}
+                    </p>
                   </div>
                   <a
                     href={card.liveUrl}
@@ -350,7 +343,8 @@ export default function Home() {
                     data-ocid={
                       i === 0 ? "home.restaurant.link" : "home.salon.link"
                     }
-                    className="flex-shrink-0 ml-4"
+                    className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full transition-all hover:scale-110"
+                    style={{ backgroundColor: `${card.color}20` }}
                     aria-label={`Visit ${card.title}`}
                   >
                     <ArrowRight size={18} style={{ color: card.color }} />
@@ -359,7 +353,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
           <div className="mt-10">
             <Link
               to="/projects"

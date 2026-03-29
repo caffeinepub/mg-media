@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const LOGO =
@@ -23,6 +24,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function handleContactClick() {
+    setOpen(false);
+    window.location.href = "/#pricing-section";
+  }
+
   return (
     <header
       className="sticky top-0 z-50 transition-all duration-300"
@@ -34,23 +40,21 @@ export default function Navbar() {
           : "0 1px 0 #f3f4f6",
       }}
     >
-      <div className="container mx-auto px-6 h-[72px] flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex-shrink-0 flex items-center gap-2">
+      <div className="container mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between">
+        <Link to="/" className="flex-shrink-0 flex items-center gap-2 min-w-0">
           <img
             src={LOGO}
             alt="MG Media Logo"
-            className="w-12 h-12 object-contain"
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain flex-shrink-0"
           />
           <span
-            className="hidden sm:block font-display font-bold text-base tracking-wide"
+            className="font-display font-bold text-sm sm:text-base tracking-wide truncate"
             style={{ color: "#8C52FF" }}
           >
             MG Media
           </span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-9">
           {navLinks.map((link) => (
             <Link
@@ -66,78 +70,82 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-
-          {/* CTA pill */}
-          <Link
-            to="/contact"
+          <a
+            href="/#pricing-section"
             data-ocid="nav.contact.link"
             className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200"
             style={{
-              backgroundColor:
-                currentPath === "/contact" ? "#8C52FF" : "transparent",
-              color: currentPath === "/contact" ? "#ffffff" : "#8C52FF",
+              backgroundColor: "transparent",
+              color: "#8C52FF",
               border: "1.5px solid #8C52FF",
             }}
             onMouseEnter={(e) => {
-              if (currentPath !== "/contact") {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  "#8C52FF";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-              }
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                "#8C52FF";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
             }}
             onMouseLeave={(e) => {
-              if (currentPath !== "/contact") {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#8C52FF";
-              }
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#8C52FF";
             }}
           >
             Contact Us
-          </Link>
+          </a>
         </nav>
 
-        {/* Mobile toggle */}
         <button
           type="button"
-          className="md:hidden p-2 rounded-md text-gray-600 hover:text-[#8C52FF] transition-colors"
+          className="md:hidden p-2.5 rounded-md text-gray-600 hover:text-[#8C52FF] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          data-ocid="nav.menu.toggle"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div
-          className="md:hidden px-6 py-5 flex flex-col gap-5 border-t"
-          style={{
-            borderColor: "rgba(140,82,255,0.1)",
-            backgroundColor: "rgba(255,255,255,0.98)",
-          }}
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              data-ocid={link.ocid}
-              className="text-sm font-medium text-gray-700 hover:text-[#8C52FF] transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            to="/contact"
-            data-ocid="nav.contact.link"
-            className="text-sm font-semibold text-[#8C52FF] border border-[#8C52FF] rounded-full px-4 py-2 text-center transition-colors hover:bg-[#8C52FF] hover:text-white"
-            onClick={() => setOpen(false)}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden border-t"
+            style={{
+              borderColor: "rgba(140,82,255,0.1)",
+              backgroundColor: "rgba(255,255,255,0.98)",
+            }}
           >
-            Contact Us
-          </Link>
-        </div>
-      )}
+            <div className="px-4 py-4 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  data-ocid={link.ocid}
+                  className={`text-sm font-medium py-3 px-4 rounded-lg transition-colors block${
+                    currentPath === link.to
+                      ? " text-[#8C52FF] bg-[#8C52FF]/5 font-semibold"
+                      : " text-gray-700 hover:text-[#8C52FF] hover:bg-[#8C52FF]/5"
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <button
+                type="button"
+                data-ocid="nav.contact.link"
+                className="mt-2 text-sm font-semibold text-white bg-[#8C52FF] rounded-full px-4 py-3 text-center transition-opacity hover:opacity-90 block"
+                onClick={handleContactClick}
+              >
+                Contact Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

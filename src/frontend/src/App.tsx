@@ -13,6 +13,41 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
+import { ArrowUp } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
+
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.2 }}
+          onClick={scrollTop}
+          aria-label="Scroll to top"
+          data-ocid="app.scroll_top.button"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-opacity"
+          style={{ backgroundColor: "#8C52FF" }}
+        >
+          <ArrowUp size={20} color="white" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -22,6 +57,7 @@ const rootRoute = createRootRoute({
         <Outlet />
       </main>
       <Footer />
+      <ScrollToTopButton />
       <Toaster richColors position="top-right" />
     </div>
   ),
@@ -60,7 +96,6 @@ const routeTree = rootRoute.addChildren([
   contactRoute,
   thankYouRoute,
 ]);
-
 const router = createRouter({ routeTree });
 
 declare module "@tanstack/react-router" {
