@@ -52,6 +52,46 @@
     --sidebar-border: 0.62 0.16 290;
     --sidebar-ring: 1 0 0;
   }
+
+  /* Dark mode tokens */
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.95 0 0;
+
+    --card: 0.15 0 0;
+    --card-foreground: 0.95 0 0;
+
+    --popover: 0.14 0.005 270;
+    --popover-foreground: 0.95 0 0;
+
+    --primary: 0.55 0.22 290;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.2 0.02 290;
+    --secondary-foreground: 0.9 0 0;
+
+    --muted: 0.18 0.01 290;
+    --muted-foreground: 0.6 0.015 290;
+
+    --accent: 0.2 0.03 290;
+    --accent-foreground: 0.9 0 0;
+
+    --destructive: 0.5 0.22 20;
+    --destructive-foreground: 1 0 0;
+
+    --border: 0.22 0.01 290;
+    --input: 0.22 0.01 290;
+    --ring: 0.55 0.22 290;
+
+    --sidebar: 0.14 0.005 270;
+    --sidebar-foreground: 0.9 0 0;
+    --sidebar-primary: 0.55 0.22 290;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.2 0.02 290;
+    --sidebar-accent-foreground: 0.9 0 0;
+    --sidebar-border: 0.22 0.01 290;
+    --sidebar-ring: 0.55 0.22 290;
+  }
 }
 
 @layer base {
@@ -116,4 +156,25 @@
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Theme transition — only color-related props to avoid jank */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

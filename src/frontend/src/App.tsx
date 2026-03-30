@@ -1,6 +1,8 @@
+import AIChatbox from "@/components/AIChatbox";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
@@ -51,13 +53,14 @@ function ScrollToTopButton() {
 
 const rootRoute = createRootRoute({
   component: () => (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#121212] transition-colors duration-300">
       <Navbar />
       <main className="flex-1">
         <Outlet />
       </main>
       <Footer />
       <ScrollToTopButton />
+      <AIChatbox />
       <Toaster richColors position="top-right" />
     </div>
   ),
@@ -105,5 +108,9 @@ declare module "@tanstack/react-router" {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }

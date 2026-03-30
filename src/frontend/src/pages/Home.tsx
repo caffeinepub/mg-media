@@ -1,3 +1,4 @@
+import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Search, Smartphone, Zap } from "lucide-react";
 import { motion } from "motion/react";
@@ -55,6 +56,20 @@ const portfolioCards = [
 ];
 
 export default function Home() {
+  const { isDark } = useTheme();
+
+  const sectionBg = isDark ? "#121212" : "#ffffff";
+  const featureSectionBg = isDark ? "#1a1a1a" : "#f5f0ff";
+  const headingColor = isDark ? "#f3f4f6" : "#111827";
+  const textColor = isDark ? "#9ca3af" : "#6b7280";
+  const cardBg = isDark ? "#1e1e1e" : "#ffffff";
+
+  function scrollToPricing() {
+    document
+      .getElementById("pricing-section")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -140,8 +155,9 @@ export default function Home() {
             animate="visible"
             className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center"
           >
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={scrollToPricing}
               data-ocid="hero.primary_button"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl w-full sm:w-auto"
               style={{
@@ -151,7 +167,7 @@ export default function Home() {
               }}
             >
               Launch Your Website
-            </Link>
+            </button>
             <Link
               to="/projects"
               data-ocid="hero.secondary_button"
@@ -179,17 +195,20 @@ export default function Home() {
             <title>Section divider</title>
             <path
               d="M0,32 C360,64 1080,0 1440,32 L1440,64 L0,64 Z"
-              fill="#ffffff"
+              fill={isDark ? "#121212" : "#ffffff"}
             />
           </svg>
         </div>
       </section>
 
-      {/* Pricing Section — right below the hero */}
+      {/* Pricing Section */}
       <PricingSection />
 
       {/* Build. Grow. Scale. */}
-      <section className="bg-white py-16 md:py-24">
+      <section
+        style={{ backgroundColor: sectionBg }}
+        className="py-16 md:py-24"
+      >
         <div className="container mx-auto px-4 sm:px-6 max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -201,12 +220,18 @@ export default function Home() {
               className="w-10 h-0.5 mx-auto mb-7"
               style={{ backgroundColor: "#8C52FF" }}
             />
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-tight"
+              style={{ color: headingColor }}
+            >
               Build. Grow. Scale.
             </h2>
-            <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+            <p
+              className="text-base sm:text-lg leading-relaxed"
+              style={{ color: textColor }}
+            >
               Most local businesses are invisible to the customers searching for
-              them online. We change that. At MG Media, we don't just build
+              them online. We change that. At MG Media, we don&apos;t just build
               websites; we create digital growth engines that turn clicks into
               loyal customers for your business.
             </p>
@@ -216,7 +241,7 @@ export default function Home() {
 
       {/* Feature Grid */}
       <section
-        style={{ backgroundColor: "#f5f0ff" }}
+        style={{ backgroundColor: featureSectionBg }}
         className="py-16 md:py-24"
       >
         <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
@@ -233,7 +258,10 @@ export default function Home() {
             >
               Why Choose Us
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+            <h2
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold"
+              style={{ color: headingColor }}
+            >
               Built to perform.
               <br />
               Designed to impress.
@@ -248,8 +276,11 @@ export default function Home() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="feature-card relative bg-white rounded-2xl p-7 sm:p-8 overflow-hidden"
-                style={{ boxShadow: "0 2px 12px rgba(140,82,255,0.06)" }}
+                className="feature-card relative rounded-2xl p-7 sm:p-8 overflow-hidden"
+                style={{
+                  backgroundColor: cardBg,
+                  boxShadow: "0 2px 12px rgba(140,82,255,0.06)",
+                }}
               >
                 <span
                   className="absolute top-4 right-5 font-display font-bold select-none pointer-events-none leading-none"
@@ -266,10 +297,16 @@ export default function Home() {
                   <div className="mb-5" style={{ color: "#8C52FF" }}>
                     {f.icon}
                   </div>
-                  <h3 className="font-display text-xl font-bold text-gray-900 mb-3">
+                  <h3
+                    className="font-display text-xl font-bold mb-3"
+                    style={{ color: headingColor }}
+                  >
                     {f.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: textColor }}
+                  >
                     {f.desc}
                   </p>
                 </div>
@@ -280,7 +317,10 @@ export default function Home() {
       </section>
 
       {/* Mini Portfolio */}
-      <section className="bg-white py-16 md:py-24">
+      <section
+        style={{ backgroundColor: sectionBg }}
+        className="py-16 md:py-24"
+      >
         <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -295,7 +335,10 @@ export default function Home() {
             >
               Our Work
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+            <h2
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-bold"
+              style={{ color: headingColor }}
+            >
               Helping Local Shops Shine
             </h2>
           </motion.div>
@@ -316,6 +359,8 @@ export default function Home() {
                     src={card.img}
                     alt={card.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <span
                     className="absolute top-3 left-4 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
@@ -327,12 +372,21 @@ export default function Home() {
                     {card.tag}
                   </span>
                 </div>
-                <div className="bg-white p-5 sm:p-7 flex items-center justify-between gap-4">
+                <div
+                  className="p-5 sm:p-7 flex items-center justify-between gap-4"
+                  style={{ backgroundColor: cardBg }}
+                >
                   <div className="min-w-0">
-                    <h3 className="font-display text-lg font-bold text-gray-900 mb-1 truncate">
+                    <h3
+                      className="font-display text-lg font-bold mb-1 truncate"
+                      style={{ color: headingColor }}
+                    >
                       {card.title}
                     </h3>
-                    <p className="text-gray-500 text-sm line-clamp-2">
+                    <p
+                      className="text-sm line-clamp-2"
+                      style={{ color: textColor }}
+                    >
                       {card.desc}
                     </p>
                   </div>

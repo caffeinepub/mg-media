@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 
 const LOGO =
@@ -15,22 +15,6 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const hostname =
     typeof window !== "undefined" ? window.location.hostname : "";
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  function handlePlansClick() {
-    if (location.pathname === "/") {
-      const el = document.getElementById("pricing-section");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate({ to: "/" }).then(() => {
-        setTimeout(() => {
-          const el = document.getElementById("pricing-section");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      });
-    }
-  }
 
   return (
     <footer style={{ backgroundColor: "#8C52FF" }}>
@@ -43,6 +27,8 @@ export default function Footer() {
                 src={LOGO}
                 alt="MG Media Logo"
                 className="w-12 h-12 object-contain rounded-full"
+                loading="lazy"
+                decoding="async"
               />
               <span className="font-bold text-white text-lg tracking-wide">
                 MG Media
@@ -73,13 +59,12 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
-            <button
-              type="button"
-              onClick={handlePlansClick}
-              className="text-white/70 hover:text-white text-sm transition-colors text-left"
+            <a
+              href="/#pricing-section"
+              className="text-white/70 hover:text-white text-sm transition-colors"
             >
               Plans
-            </button>
+            </a>
           </div>
 
           {/* Tagline */}
@@ -87,14 +72,14 @@ export default function Footer() {
             <p className="text-white/80 text-sm text-center sm:text-right font-medium leading-relaxed">
               Building digital growth engines
               <br />
-              for local businesses in Gorakhpur & beyond.
+              for local businesses in Gorakhpur &amp; beyond.
             </p>
           </div>
         </div>
 
         <div className="pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
           <p className="text-white/70 text-xs">
-            © {year} MG Media · All rights reserved.
+            &copy; {year} MG Media &middot; All rights reserved.
           </p>
           <p className="text-white/50 text-xs">
             Built with ♥ using{" "}

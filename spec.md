@@ -1,32 +1,33 @@
-# MG Media
+# MG Media Website — Version 28
 
 ## Current State
-No existing frontend files found. Building from scratch based on previous deployment history.
+Four-page marketing website with Home, Projects & Services, About Us, Contact, ThankYou. Pricing section exists below the hero on the Home page. Navbar is sticky with logo + nav links. No dark mode. Plans have outdated feature lists. "Launch Your Website" goes to /contact. No AI chatbox.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Full redesign of all four pages with detailed layout and content as specified
-- Home page: navbar with circular logo, hero with dual CTAs, Local Impact section, Quick Feature Grid (3 icons), Mini-Portfolio preview section with two project thumbnails, footer
-- Projects & Services page: project cards with Raspberry Mist background, Our Services section with icons
-- About Us page: split design (white left / dark raspberry right), verbatim bio text
-- Contact Us page: dark raspberry full background, white form fields, Thank You redirect page
-- Typography: bold serif for headings, clean sans-serif for body
+- Dark/Light Theme Toggle Switch in Navbar (top right), pill-shaped, 0.3s ease-in-out animation. Sun icon in light mode, Moon icon in dark mode. #8c52ff accent preserved in both modes.
+- Dark mode theming across entire site: bg #121212, white text, #8c52ff accents.
+- AI Chatbox floating button (bottom right), trained with MG Media website info (pages, plans, pricing). Greet on open, show quick questions, collect contact info, reply only about MG Media.
 
 ### Modify
-- Color palette refined: Dark Raspberry (#872642), Crisp White (#FFFFFF), Soft Charcoal (#333333) for body text
-- Hero section: white background with subtle dark raspberry accent curve at bottom, two CTA buttons
-- Logo only in navbar (circular) and footer — not in hero
+- "Launch Your Website" hero CTA: scroll to #pricing-section instead of /contact
+- Pricing title: "Best Website Design Services in Gorakhpur"
+- Pricing subtitle: "Helping local businesses in Gorakhpur grow with affordable, high-quality, social media integration & SEO ready website."
+- Starter plan: 3-4 Pages, Website Design & Development, Fast Loading in Mobile & Laptop, Basic Social Media Integration (remove free support, maintenance)
+- Professional plan: 5-7 Pages, Website Design & Development, Fast Loading in Mobile & Laptop, Basic Social Media Integration, Enhanced SEO Optimization, AI Chatbox, Free Logo Design (remove free support, maintenance)
+- Premium plan: Up to 10 Pages, Website Design & Development, Fast Loading in Mobile & Laptop, Basic Social Media Integration, Enhanced SEO Optimization, AI Chatbox, Professional Brand Logo Design, Google My Business Setup, Custom Design (remove free support, maintenance, change "unlimited" to "up to 10")
 
 ### Remove
-- Nothing (fresh build)
+- Free Support from all plans
+- Website Maintenance & Updates from all plans
 
 ## Implementation Plan
-1. Set up design tokens in index.css (OKLCH mapped from hex values)
-2. Build App.tsx with React Router for 4 pages + Thank You page
-3. HomePage: Navbar, Hero (dual CTA, raspberry curve), Local Impact, Feature Grid, Portfolio Preview, Footer
-4. ProjectsPage: Project cards (Raspberry Mist bg), Services section with icons
-5. AboutPage: Split layout — white left bio, dark raspberry right panel
-6. ContactPage: Dark raspberry bg, white form fields, submit redirects to ThankYou
-7. ThankYouPage: confirmation message
-8. Apply deterministic data-ocid markers to all interactive surfaces
+1. Create ThemeContext with isDark, persisted to localStorage, toggle function
+2. Create ThemeToggle pill component (sun/moon icons, 0.3s animation)
+3. Add ThemeToggle to Navbar right side
+4. Apply dark mode styles site-wide via CSS classes
+5. Update PricingSection: title, subtitle, all plan features
+6. Update hero Launch button to scroll to pricing
+7. Create AIChatbox component with knowledge base and contact collection
+8. Add AIChatbox to App.tsx

@@ -1,3 +1,5 @@
+import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,6 +19,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -24,20 +27,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  function handleContactClick() {
+  function handlePlanClick() {
     setOpen(false);
-    window.location.href = "/#pricing-section";
+    if (window.location.pathname === "/") {
+      document
+        .getElementById("pricing-section")
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = "/#pricing-section";
+    }
   }
+
+  const bgColor = isDark
+    ? scrolled
+      ? "rgba(18,18,18,0.97)"
+      : "#121212"
+    : scrolled
+      ? "rgba(255,255,255,0.97)"
+      : "#ffffff";
+
+  const textColor = isDark ? "#e5e7eb" : "#4b5563";
 
   return (
     <header
       className="sticky top-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "#ffffff",
+        backgroundColor: bgColor,
         backdropFilter: scrolled ? "blur(12px)" : "none",
         boxShadow: scrolled
-          ? "0 1px 20px rgba(140,82,255,0.08)"
-          : "0 1px 0 #f3f4f6",
+          ? "0 1px 20px rgba(140,82,255,0.1)"
+          : isDark
+            ? "0 1px 0 #222"
+            : "0 1px 0 #f3f4f6",
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between">
@@ -46,6 +67,8 @@ export default function Navbar() {
             src={LOGO}
             alt="MG Media Logo"
             className="w-10 h-10 sm:w-12 sm:h-12 object-contain flex-shrink-0"
+            loading="eager"
+            decoding="async"
           />
           <span
             className="font-display font-bold text-sm sm:text-base tracking-wide truncate"
@@ -55,7 +78,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -64,45 +87,54 @@ export default function Navbar() {
               className={`nav-link text-sm font-medium transition-colors duration-200 pb-0.5${
                 currentPath === link.to
                   ? " active text-[#8C52FF] font-semibold"
-                  : " text-gray-600 hover:text-[#8C52FF]"
+                  : ""
               }`}
+              style={{
+                color: currentPath === link.to ? "#8C52FF" : textColor,
+              }}
             >
               {link.label}
             </Link>
           ))}
-          <a
-            href="/#pricing-section"
+          <button
+            type="button"
             data-ocid="nav.contact.link"
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200"
+            onClick={handlePlanClick}
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border"
             style={{
               backgroundColor: "transparent",
               color: "#8C52FF",
-              border: "1.5px solid #8C52FF",
+              borderColor: "#8C52FF",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor =
                 "#8C52FF";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+              (e.currentTarget as HTMLButtonElement).style.color = "#ffffff";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor =
                 "transparent";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#8C52FF";
+              (e.currentTarget as HTMLButtonElement).style.color = "#8C52FF";
             }}
           >
             Contact Us
-          </a>
+          </button>
+          <ThemeToggle />
         </nav>
 
-        <button
-          type="button"
-          className="md:hidden p-2.5 rounded-md text-gray-600 hover:text-[#8C52FF] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          data-ocid="nav.menu.toggle"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="p-2.5 rounded-md transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+            style={{ color: textColor }}
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            data-ocid="nav.menu.toggle"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -114,8 +146,12 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden overflow-hidden border-t"
             style={{
-              borderColor: "rgba(140,82,255,0.1)",
-              backgroundColor: "rgba(255,255,255,0.98)",
+              borderColor: isDark
+                ? "rgba(140,82,255,0.2)"
+                : "rgba(140,82,255,0.1)",
+              backgroundColor: isDark
+                ? "rgba(18,18,18,0.98)"
+                : "rgba(255,255,255,0.98)",
             }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
@@ -126,9 +162,18 @@ export default function Navbar() {
                   data-ocid={link.ocid}
                   className={`text-sm font-medium py-3 px-4 rounded-lg transition-colors block${
                     currentPath === link.to
-                      ? " text-[#8C52FF] bg-[#8C52FF]/5 font-semibold"
-                      : " text-gray-700 hover:text-[#8C52FF] hover:bg-[#8C52FF]/5"
+                      ? " text-[#8C52FF] font-semibold"
+                      : ""
                   }`}
+                  style={{
+                    color: currentPath === link.to ? "#8C52FF" : textColor,
+                    backgroundColor:
+                      currentPath === link.to
+                        ? isDark
+                          ? "rgba(140,82,255,0.15)"
+                          : "rgba(140,82,255,0.05)"
+                        : undefined,
+                  }}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -138,7 +183,7 @@ export default function Navbar() {
                 type="button"
                 data-ocid="nav.contact.link"
                 className="mt-2 text-sm font-semibold text-white bg-[#8C52FF] rounded-full px-4 py-3 text-center transition-opacity hover:opacity-90 block"
-                onClick={handleContactClick}
+                onClick={handlePlanClick}
               >
                 Contact Us
               </button>
