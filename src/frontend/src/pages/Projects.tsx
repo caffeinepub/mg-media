@@ -63,7 +63,7 @@ const services = [
 export default function Projects() {
   return (
     <div className="flex flex-col">
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
+      <section className="bg-white dark:bg-[#121212] py-16 md:py-20 border-b border-gray-100 dark:border-gray-700">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -80,14 +80,14 @@ export default function Projects() {
             >
               Explore Our Project
             </h1>
-            <p className="mt-3 text-gray-500 text-base sm:text-lg">
+            <p className="mt-3 text-gray-500 dark:text-gray-400 text-base sm:text-lg">
               Helping Local Shops Shine Online
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section className="bg-gray-50 dark:bg-[#1a1a1a] py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             {projects.map((p, i) => (
@@ -98,11 +98,7 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden border shadow-xs hover:shadow-md transition-shadow duration-300"
-                style={{
-                  backgroundColor: "rgba(140,82,255,0.05)",
-                  borderColor: "rgba(140,82,255,0.15)",
-                }}
+                className="rounded-xl overflow-hidden border shadow-xs hover:shadow-md transition-shadow duration-300 bg-[rgba(140,82,255,0.05)] dark:bg-[#1e1e2e] border-[rgba(140,82,255,0.15)] dark:border-[rgba(140,82,255,0.3)]"
               >
                 <div className="h-52 sm:h-56 overflow-hidden relative">
                   <img
@@ -114,10 +110,10 @@ export default function Projects() {
                   />
                 </div>
                 <div className="p-5 sm:p-7">
-                  <h2 className="font-display text-xl font-bold text-gray-900 mb-2">
+                  <h2 className="font-display text-xl font-bold text-gray-900 dark:text-white mb-2">
                     {p.title}
                   </h2>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                  <p className="text-gray-500 dark:text-gray-300 text-sm leading-relaxed mb-6">
                     {p.desc}
                   </p>
                   <a
@@ -137,7 +133,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-white dark:bg-[#121212] py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -166,7 +162,7 @@ export default function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="flex gap-4 sm:gap-5 p-5 sm:p-6 rounded-xl border border-gray-100 bg-gray-50 hover:shadow-xs transition-shadow"
+                className="flex gap-4 sm:gap-5 p-5 sm:p-6 rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-[#1e1e1e] hover:shadow-xs transition-shadow"
               >
                 <div
                   className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center"
@@ -178,10 +174,10 @@ export default function Projects() {
                   {s.icon}
                 </div>
                 <div>
-                  <h3 className="font-display text-base font-semibold text-gray-900 mb-1">
+                  <h3 className="font-display text-base font-semibold text-gray-900 dark:text-white mb-1">
                     {s.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                     {s.desc}
                   </p>
                 </div>
