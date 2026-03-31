@@ -15,10 +15,15 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-import AOS from "aos";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+
+declare global {
+  interface Window {
+    AOS: { init: (opts?: Record<string, unknown>) => void };
+  }
+}
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -54,7 +59,9 @@ function ScrollToTopButton() {
 
 function AOSInit() {
   useEffect(() => {
-    AOS.init({ duration: 1000, once: false, mirror: true });
+    if (window.AOS) {
+      window.AOS.init({ duration: 1000, once: false, mirror: true });
+    }
   }, []);
   return null;
 }

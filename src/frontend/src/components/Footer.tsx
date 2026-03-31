@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 
 const LOGO =
@@ -15,6 +15,24 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const hostname =
     typeof window !== "undefined" ? window.location.hostname : "";
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handlePlansClick() {
+    if (location.pathname === "/") {
+      document
+        .getElementById("pricing-section")
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate({ to: "/" }).then(() => {
+        setTimeout(() => {
+          document
+            .getElementById("pricing-section")
+            ?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      });
+    }
+  }
 
   return (
     <footer style={{ backgroundColor: "#8C52FF" }}>
@@ -54,17 +72,24 @@ export default function Footer() {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "instant" as ScrollBehavior,
+                  })
+                }
                 className="text-white/70 hover:text-white text-sm transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <a
-              href="/#pricing-section"
-              className="text-white/70 hover:text-white text-sm transition-colors"
+            <button
+              type="button"
+              onClick={handlePlansClick}
+              className="text-white/70 hover:text-white text-sm transition-colors text-left"
             >
               Plans
-            </a>
+            </button>
           </div>
 
           {/* Tagline */}

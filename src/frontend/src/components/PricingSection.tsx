@@ -44,7 +44,7 @@ const plans: Plan[] = [
     price: "999",
     icon: "⭐",
     tag: "Most Popular",
-    pages: "5–7 Pages",
+    pages: "5–6 Pages",
     description: "Best for growing businesses",
     features: [
       { text: "Website Design & Development", included: true },
@@ -59,10 +59,10 @@ const plans: Plan[] = [
   {
     id: "premium",
     name: "Premium",
-    price: "1499",
+    price: "1599",
     icon: "👑",
     tag: "For Established Brands",
-    pages: "Up to 10 Pages",
+    pages: "7–8 Pages",
     description: "Complete digital solution",
     features: [
       { text: "Website Design & Development", included: true },
@@ -72,7 +72,6 @@ const plans: Plan[] = [
       { text: "AI Chatbox", included: true },
       { text: "Professional Brand Logo Design", included: true },
       { text: "Google My Business Setup", included: true },
-      { text: "Custom Design", included: true },
     ],
     highlighted: false,
   },
@@ -132,6 +131,15 @@ export default function PricingSection() {
 
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+        {/* Plan name badge */}
+        <div className="flex justify-center mb-4">
+          <span
+            className="text-sm font-bold px-4 py-1.5 rounded-full text-white"
+            style={{ backgroundColor: "#8c52ff" }}
+          >
+            Digital Presence (No Custom Domain)
+          </span>
+        </div>
         <h1
           className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
           style={{ color: headingColor }}
@@ -385,7 +393,8 @@ export default function PricingSection() {
 
       {/* Final CTA */}
       <div
-        className="max-w-4xl mx-auto text-center bg-gradient-to-r from-purple-600 to-purple-700 rounded-3xl p-12 text-white"
+        className="max-w-4xl mx-auto text-center rounded-3xl p-12 text-white"
+        style={{ background: "#8c52ff" }}
         data-aos="fade-up"
       >
         <h2 className="text-4xl font-bold mb-4">
@@ -398,7 +407,8 @@ export default function PricingSection() {
         <button
           type="button"
           data-ocid="pricing.cta.button"
-          className="bg-white text-purple-600 font-bold px-8 py-4 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          className="bg-white font-bold px-8 py-4 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          style={{ color: "#8c52ff" }}
           onClick={() => {
             document
               .getElementById("pricing-section")

@@ -16,13 +16,13 @@ const KB = {
   greeting:
     "Hi! Welcome to MG Media 👋 How can I help you today? Ask me anything about our services, plans, or projects!",
   plans:
-    "Here are our website design plans:\n\n🚀 **Starter — ₹499**\n• 3–4 Pages\n• Website Design & Development\n• Fast Loading (Mobile & Laptop)\n• Basic Social Media Integration\n\n⭐ **Professional — ₹999** *(Most Popular)*\n• 5–7 Pages\n• All Starter features\n• Enhanced SEO Optimization\n• AI Chatbox\n• Free Logo Design\n\n👑 **Premium — ₹1499**\n• Up to 10 Pages\n• All Professional features\n• Professional Brand Logo Design\n• Google My Business Setup\n• Custom Design",
+    "Here are our website design plans:\n\n🚀 **Starter — ₹499**\n• 3–4 Pages\n• Website Design & Development\n• Fast Loading (Mobile & Laptop)\n• Basic Social Media Integration\n\n⭐ **Professional — ₹999** *(Most Popular)*\n• 5–7 Pages\n• All Starter features\n• Enhanced SEO Optimization\n• AI Chatbox\n• Free Logo Design\n\n👑 **Premium — ₹1599**\n• Up to 10 Pages\n• All Professional features\n• Professional Brand Logo Design\n• Google My Business Setup\n• Custom Design",
   services:
     "We offer the following services at MG Media:\n\n🎨 Website Design & Development\n📱 Mobile Responsive Design\n🔍 SEO Optimization\n📲 Social Media Integration\n🤖 AI Chatbox Integration\n🎯 Google My Business Setup\n✨ Brand Logo Design",
   contact:
     "You can reach Monika Gupta at:\n\n📧 **Email:** monikamkg0725@gmail.com\n\nFeel free to drop a message and she'll get back within 24 hours!",
   projects:
-    "Here are some of our recent projects:\n\n🍽️ **Restaurant Website** — Modern digital menus and integrated online booking. [Live Demo](https://funded-flex-fso.caffeine.xyz)\n\n💅 **Beauty Salon Website** — Elegant design with seamless booking system. [Live Demo](https://glam-beauty-parlour-597.caffeine.xyz)",
+    "Here are some of our recent projects:\n\n🍽️ **Restaurant Website** — Modern digital menus and integrated online booking.\n\n💅 **Beauty Salon Website** — Elegant design with seamless booking system.",
   about:
     "MG Media is a web design studio by **Monika Gupta**, based in Gorakhpur, India. We specialize in building professional, affordable, and high-converting websites for local businesses. Our goal is to make local businesses visible online!",
   unknown:
@@ -50,6 +50,17 @@ function getResponse(input: string): string {
   return KB.unknown;
 }
 
+function renderText(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={`b-${i}-${part.slice(0, 4)}`}>{part}</strong>
+    ) : (
+      <span key={`s-${i}-${part.slice(0, 4)}`}>{part}</span>
+    ),
+  );
+}
+
 let msgCounter = 3;
 
 export default function AIChatbox() {
@@ -69,7 +80,21 @@ export default function AIChatbox() {
   const [contactForm, setContactForm] = useState({ name: "", phone: "" });
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const msgCountRef = useRef(0);
 
+  // Auto-scroll whenever a new message is added
+  useEffect(() => {
+    const currentCount = messages.length;
+    if (currentCount !== msgCountRef.current) {
+      msgCountRef.current = currentCount;
+      setTimeout(
+        () => bottomRef.current?.scrollIntoView({ behavior: "smooth" }),
+        50,
+      );
+    }
+  });
+
+  // Also scroll when chat opens
   useEffect(() => {
     if (open) {
       setTimeout(
@@ -127,15 +152,46 @@ export default function AIChatbox() {
 
   return (
     <>
+      {/* Floating label when closed */}
+      {!open && (
+        <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 10 }}
+          className="fixed bottom-[5.5rem] right-20 z-50 bg-white text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-purple-200 whitespace-nowrap pointer-events-none"
+        >
+          Chat with us! 💬
+        </motion.div>
+      )}
+
+      {/* Pulsing ring when closed */}
+      {!open && (
+        <span
+          className="fixed bottom-20 right-6 z-40 w-14 h-14 rounded-full animate-ping opacity-30"
+          style={{ backgroundColor: "#8c52ff" }}
+        />
+      )}
+
       {/* Chat Button */}
       <motion.button
         type="button"
         onClick={() => setOpen(!open)}
         data-ocid="chatbox.open_modal_button"
-        className="fixed bottom-20 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
+        className="fixed bottom-20 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
         style={{ backgroundColor: "#8c52ff" }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
+        animate={!open ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+        transition={
+          !open
+            ? {
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatDelay: 3,
+                ease: "easeInOut",
+              }
+            : { duration: 0.2 }
+        }
         aria-label="Open chat"
       >
         {open ? (
@@ -197,7 +253,9 @@ export default function AIChatbox() {
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
                   <div className="max-w-[85%]">
                     {msg.text && (
@@ -213,7 +271,7 @@ export default function AIChatbox() {
                             msg.role === "bot" ? "4px" : undefined,
                         }}
                       >
-                        {msg.text}
+                        {msg.role === "bot" ? renderText(msg.text) : msg.text}
                       </div>
                     )}
                     {msg.chips && (
