@@ -2,13 +2,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#8C52FF" />
     <title>MG Media — Web Design Studio</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-D2YSEDug.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D8lyuvlY.css">
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts with display=swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- AOS CSS loaded non-blocking -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /></noscript>
+    <script type="module" crossorigin src="/assets/index-CG6rFHoP.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CGKtPRcl.css">
   </head>
   <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS deferred so it doesn't block rendering -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   </body>
 </html>

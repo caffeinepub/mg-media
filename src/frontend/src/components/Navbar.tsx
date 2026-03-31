@@ -66,8 +66,11 @@ export default function Navbar() {
           <img
             src={LOGO}
             alt="MG Media Logo"
+            width={48}
+            height={48}
             className="w-10 h-10 sm:w-12 sm:h-12 object-contain flex-shrink-0"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
           <span

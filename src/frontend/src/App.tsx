@@ -3,11 +3,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import Home from "@/pages/Home";
-import Projects from "@/pages/Projects";
-import ThankYou from "@/pages/ThankYou";
 import {
   Outlet,
   RouterProvider,
@@ -17,7 +12,13 @@ import {
 } from "@tanstack/react-router";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
+
+const Home = lazy(() => import("@/pages/Home"));
+const Projects = lazy(() => import("@/pages/Projects"));
+const About = lazy(() => import("@/pages/About"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const ThankYou = lazy(() => import("@/pages/ThankYou"));
 
 declare global {
   interface Window {
@@ -72,7 +73,9 @@ const rootRoute = createRootRoute({
       <AOSInit />
       <Navbar />
       <main className="flex-1">
-        <Outlet />
+        <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <ScrollToTopButton />
