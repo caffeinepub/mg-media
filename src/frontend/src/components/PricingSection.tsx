@@ -32,7 +32,7 @@ const plans: Plan[] = [
     pages: "3–4 Pages",
     description: "Get your online presence started",
     features: [
-      { text: "Website Design & Development", included: true },
+      { text: "Website Design", included: true },
       { text: "Fast Loading in Mobile & Laptop", included: true },
       { text: "Basic Social Media Integration", included: true },
     ],
@@ -47,7 +47,7 @@ const plans: Plan[] = [
     pages: "5–6 Pages",
     description: "Best for growing businesses",
     features: [
-      { text: "Website Design & Development", included: true },
+      { text: "Website Design", included: true },
       { text: "Fast Loading in Mobile & Laptop", included: true },
       { text: "Basic Social Media Integration", included: true },
       { text: "Enhanced SEO Optimization", included: true },
@@ -65,7 +65,7 @@ const plans: Plan[] = [
     pages: "7–8 Pages",
     description: "Complete digital solution",
     features: [
-      { text: "Website Design & Development", included: true },
+      { text: "Website Design", included: true },
       { text: "Fast Loading in Mobile & Laptop", included: true },
       { text: "Basic Social Media Integration", included: true },
       { text: "Enhanced SEO Optimization", included: true },

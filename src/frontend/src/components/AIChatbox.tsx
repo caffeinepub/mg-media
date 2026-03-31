@@ -16,9 +16,9 @@ const KB = {
   greeting:
     "Hi! Welcome to MG Media 👋 How can I help you today? Ask me anything about our services, plans, or projects!",
   plans:
-    "Here are our website design plans:\n\n🚀 **Starter — ₹499**\n• 3–4 Pages\n• Website Design & Development\n• Fast Loading (Mobile & Laptop)\n• Basic Social Media Integration\n\n⭐ **Professional — ₹999** *(Most Popular)*\n• 5–7 Pages\n• All Starter features\n• Enhanced SEO Optimization\n• AI Chatbox\n• Free Logo Design\n\n👑 **Premium — ₹1599**\n• Up to 10 Pages\n• All Professional features\n• Professional Brand Logo Design\n• Google My Business Setup\n• Custom Design",
+    "Here are our website design plans:\n\n🚀 **Starter — ₹499**\n• 3–4 Pages\n• Website Design\n• Fast Loading (Mobile & Laptop)\n• Basic Social Media Integration\n\n⭐ **Professional — ₹999** *(Most Popular)*\n• 5–7 Pages\n• All Starter features\n• Enhanced SEO Optimization\n• AI Chatbox\n• Free Logo Design\n\n👑 **Premium — ₹1599**\n• Up to 10 Pages\n• All Professional features\n• Professional Brand Logo Design\n• Google My Business Setup\n• Custom Design",
   services:
-    "We offer the following services at MG Media:\n\n🎨 Website Design & Development\n📱 Mobile Responsive Design\n🔍 SEO Optimization\n📲 Social Media Integration\n🤖 AI Chatbox Integration\n🎯 Google My Business Setup\n✨ Brand Logo Design",
+    "We offer the following services at MG Media:\n\n🎨 Website Design\n📱 Mobile Responsive Design\n🔍 SEO Optimization\n📲 Social Media Integration\n🤖 AI Chatbox Integration\n🎯 Google My Business Setup\n✨ Brand Logo Design",
   contact:
     "You can reach Monika Gupta at:\n\n📧 **Email:** monikamkg0725@gmail.com\n\nFeel free to drop a message and she'll get back within 24 hours!",
   projects:
