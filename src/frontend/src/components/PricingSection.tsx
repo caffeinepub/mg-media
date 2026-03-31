@@ -78,6 +78,8 @@ const plans: Plan[] = [
   },
 ];
 
+const aosDelays = ["0", "100", "200"];
+
 export default function PricingSection() {
   const { isDark } = useTheme();
   const [hoveredPlan, setHoveredPlan] = useState<string | null>("professional");
@@ -129,7 +131,7 @@ export default function PricingSection() {
       </div>
 
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
         <h1
           className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
           style={{ color: headingColor }}
@@ -151,9 +153,11 @@ export default function PricingSection() {
       {/* Pricing Cards */}
       <div className="max-w-7xl mx-auto mb-20">
         <div className="grid md:grid-cols-3 gap-8 lg:gap-6 items-center">
-          {plans.map((plan) => (
+          {plans.map((plan, i) => (
             <div
               key={plan.id}
+              data-aos="fade-up"
+              data-aos-delay={aosDelays[i]}
               className={`relative group transition-all duration-300 transform ${
                 plan.highlighted ? "md:scale-105" : ""
               }`}
@@ -325,6 +329,7 @@ export default function PricingSection() {
         <h2
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: headingColor }}
+          data-aos="fade-up"
         >
           Every Plan is Built to Perform
         </h2>
@@ -350,10 +355,12 @@ export default function PricingSection() {
               title: "Fast & Secure",
               desc: "Optimized performance guaranteed",
             },
-          ].map((item) => (
+          ].map((item, i) => (
             <div
               key={item.title}
               className="p-6 rounded-2xl border"
+              data-aos="zoom-in"
+              data-aos-delay={String(i * 100)}
               style={{
                 background: isDark
                   ? "rgba(140,82,255,0.08)"
@@ -377,7 +384,10 @@ export default function PricingSection() {
       </div>
 
       {/* Final CTA */}
-      <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-purple-600 to-purple-700 rounded-3xl p-12 text-white">
+      <div
+        className="max-w-4xl mx-auto text-center bg-gradient-to-r from-purple-600 to-purple-700 rounded-3xl p-12 text-white"
+        data-aos="fade-up"
+      >
         <h2 className="text-4xl font-bold mb-4">
           Ready to Launch Your Website?
         </h2>

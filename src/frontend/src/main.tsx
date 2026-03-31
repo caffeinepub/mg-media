@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { InternetIdentityProvider } from "./hooks/useInternetIdentity";
 import "./index.css";
+import "aos/dist/aos.css";
 
 BigInt.prototype.toJSON = function () {
   return this.toString();

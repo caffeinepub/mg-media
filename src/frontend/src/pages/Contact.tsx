@@ -44,16 +44,20 @@ export default function Contact() {
     <div className="min-h-screen" style={{ backgroundColor: "#8C52FF" }}>
       <div className="container mx-auto px-4 sm:px-6 py-16 md:py-20">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-10 sm:mb-12">
+          <div className="text-center mb-10 sm:mb-12" data-aos="fade-up">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
               Ready to Start Your Project?
             </h1>
             <p className="text-white/70 text-base sm:text-lg">
-              Let’s build something extraordinary together.
+              Let's build something extraordinary together.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10">
+          <div
+            className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 sm:gap-6"
@@ -182,7 +186,11 @@ export default function Contact() {
             </form>
           </div>
 
-          <div className="mt-10 sm:mt-12 text-center">
+          <div
+            className="mt-10 sm:mt-12 text-center"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-4">
               Get In Touch
             </h2>

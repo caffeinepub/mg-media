@@ -15,6 +15,7 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
+import AOS from "aos";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -51,9 +52,17 @@ function ScrollToTopButton() {
   );
 }
 
+function AOSInit() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: false, mirror: true });
+  }, []);
+  return null;
+}
+
 const rootRoute = createRootRoute({
   component: () => (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#121212] transition-colors duration-300">
+      <AOSInit />
       <Navbar />
       <main className="flex-1">
         <Outlet />
